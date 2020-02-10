@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RMCList : NSObject
+@interface RMCList : NSObject <NSSecureCoding>
 
 @property (strong, nonatomic) NSArray<NSString*> *list;
 

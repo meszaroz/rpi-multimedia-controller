@@ -9,8 +9,10 @@
 #import "RMCImage.h"
 #import "mimage.h"
 
-@implementation RMCImage {
-    ImageContainer *_cont;
+@implementation RMCImage
+
++ (BOOL)supportsSecureCoding {
+    return YES;
 }
 
 - (instancetype)init {
@@ -19,7 +21,6 @@
     if (self) {
         _identifier = nil;
         _image      = nil;
-        _cont       = 0;
     }
     
     return self;
@@ -29,10 +30,12 @@
     self = [self init];
     
     if (self && buffer && buffer->mode == Image) {
-        _cont = readImageContainerFromBuffer(buffer);
-        if (_cont) {
-            _identifier = [NSString stringWithUTF8String:_cont->name];
-            _image      = [self.class imageFromContainer:_cont];
+        ImageContainer *cont = readImageContainerFromBuffer(buffer);
+        if (cont) {
+            _identifier = [NSString stringWithUTF8String:cont->name];
+            _image      = [self.class imageFromContainer:cont];
+            
+            clearImageContainer(cont);
         }
     }
     
@@ -49,10 +52,20 @@
     return self;
 }
 
-- (void)dealloc {
-    if (_cont) {
-        _cont = clearImageContainer(_cont);
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:_identifier forKey:@"id"   ];
+    [aCoder encodeObject:_image      forKey:@"image"];
+}
+
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    
+    if (self) {
+        _identifier = [aDecoder decodeObjectForKey:@"id"   ];
+        _image      = [aDecoder decodeObjectForKey:@"image"];
     }
+    
+    return self;
 }
 
 #pragma mark - support

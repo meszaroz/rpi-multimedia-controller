@@ -11,6 +11,10 @@
 
 @implementation RMCError
 
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
 - (instancetype)init {
     self = [super init];
     
@@ -31,6 +35,20 @@
             
             clearErrorContainer(cont);
         }
+    }
+    
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:_message forKey:@"message"];
+}
+
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    
+    if (self) {
+        _message = [aDecoder decodeObjectForKey:@"message"];
     }
     
     return self;

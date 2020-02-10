@@ -73,11 +73,15 @@
 
 #pragma mark - Communication Delegate
 - (void)communication:(RMCCommunication*)communication didConnectToHost:(NSString *)host port:(uint16_t)port {
-    [self requestList  ];
-    [self requestStatus];
+    if (_delegate && [_delegate respondsToSelector:@selector(handler:didConnectToHost:port:)]) {
+        [_delegate handler:self didConnectToHost:host port:port];
+    }
 }
 
 - (void)communication:(RMCCommunication*)communication didDisconnectWithError:(nullable NSError *)err {
+    if (_delegate && [_delegate respondsToSelector:@selector(handler:didDisconnectWithError:)]) {
+        [_delegate handler:self didDisconnectWithError:err];
+    }
 }
 
 - (void)communication:(RMCCommunication*)communication didReceiveData:(Buffer *)data {

@@ -11,6 +11,10 @@
 
 @implementation RMCStatus
 
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
 - (instancetype)init {
     self = [super init];
     
@@ -41,6 +45,28 @@
             
             clearStatusContainer(cont);
         }
+    }
+    
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:  _act   forKey:@"act" ];
+    [aCoder encodeObject:@(_play) forKey:@"play"];
+    [aCoder encodeObject:@(_dura) forKey:@"dura"];
+    [aCoder encodeObject:@(_pos ) forKey:@"pos" ];
+    [aCoder encodeObject:@(_vol ) forKey:@"vol" ];
+}
+
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    
+    if (self) {
+        _act  = [aDecoder decodeObjectForKey:@"act" ];
+        _play = ((NSNumber*)[aDecoder decodeObjectForKey:@"play"]).boolValue;
+        _dura = ((NSNumber*)[aDecoder decodeObjectForKey:@"dura"]).intValue;
+        _pos  = ((NSNumber*)[aDecoder decodeObjectForKey:@"pos" ]).intValue;
+        _vol  = ((NSNumber*)[aDecoder decodeObjectForKey:@"vol" ]).intValue;
     }
     
     return self;

@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2148802923F1EBBF009C45C6 /* RMCCommunicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2148802823F1EBBF009C45C6 /* RMCCommunicationController.m */; };
 		21FCC5B623F17BE300684860 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FCC5B523F17BE300684860 /* AppDelegate.m */; };
-		21FCC5B923F17BE300684860 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FCC5B823F17BE300684860 /* SceneDelegate.m */; };
-		21FCC5BC23F17BE300684860 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FCC5BB23F17BE300684860 /* ViewController.m */; };
-		21FCC5BF23F17BE300684860 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21FCC5BD23F17BE300684860 /* Main.storyboard */; };
 		21FCC5C123F17BE700684860 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21FCC5C023F17BE700684860 /* Assets.xcassets */; };
 		21FCC5C423F17BE700684860 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21FCC5C223F17BE700684860 /* LaunchScreen.storyboard */; };
 		21FCC5C723F17BE700684860 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FCC5C623F17BE700684860 /* main.m */; };
@@ -36,14 +34,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2148802723F1EBBF009C45C6 /* RMCCommunicationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMCCommunicationController.h; sourceTree = "<group>"; };
+		2148802823F1EBBF009C45C6 /* RMCCommunicationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMCCommunicationController.m; sourceTree = "<group>"; };
 		21FCC5B123F17BE300684860 /* rpi-multimedia-controller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rpi-multimedia-controller.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21FCC5B423F17BE300684860 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		21FCC5B523F17BE300684860 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		21FCC5B723F17BE300684860 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		21FCC5B823F17BE300684860 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		21FCC5BA23F17BE300684860 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		21FCC5BB23F17BE300684860 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		21FCC5BE23F17BE300684860 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		21FCC5C023F17BE700684860 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21FCC5C323F17BE700684860 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21FCC5C523F17BE700684860 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -131,11 +126,6 @@
 				21FCC60D23F1BDB700684860 /* List */,
 				21FCC5B423F17BE300684860 /* AppDelegate.h */,
 				21FCC5B523F17BE300684860 /* AppDelegate.m */,
-				21FCC5B723F17BE300684860 /* SceneDelegate.h */,
-				21FCC5B823F17BE300684860 /* SceneDelegate.m */,
-				21FCC5BA23F17BE300684860 /* ViewController.h */,
-				21FCC5BB23F17BE300684860 /* ViewController.m */,
-				21FCC5BD23F17BE300684860 /* Main.storyboard */,
 				21FCC5C023F17BE700684860 /* Assets.xcassets */,
 				21FCC5C223F17BE700684860 /* LaunchScreen.storyboard */,
 				21FCC5C523F17BE700684860 /* Info.plist */,
@@ -225,6 +215,8 @@
 				21FCC5F523F193A000684860 /* RMCCommunication.m */,
 				21FCC60723F1A64900684860 /* RMCCommunicationHandler.h */,
 				21FCC60823F1A64900684860 /* RMCCommunicationHandler.m */,
+				2148802723F1EBBF009C45C6 /* RMCCommunicationController.h */,
+				2148802823F1EBBF009C45C6 /* RMCCommunicationController.m */,
 			);
 			path = Communication;
 			sourceTree = "<group>";
@@ -340,7 +332,6 @@
 			files = (
 				21FCC5C423F17BE700684860 /* LaunchScreen.storyboard in Resources */,
 				21FCC5C123F17BE700684860 /* Assets.xcassets in Resources */,
-				21FCC5BF23F17BE300684860 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,15 +343,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-rpi-multimedia-controller-checkManifestLockResult.txt",
 			);
@@ -382,12 +369,12 @@
 				21FCC5E423F1820000684860 /* RMCWelcomeViewController.m in Sources */,
 				21FCC5F223F1846700684860 /* MZActivityIndicatorOverlayView.m in Sources */,
 				21FCC5DE23F1807700684860 /* mlist.c in Sources */,
+				2148802923F1EBBF009C45C6 /* RMCCommunicationController.m in Sources */,
 				21FCC60923F1A64900684860 /* RMCCommunicationHandler.m in Sources */,
 				21FCC5E823F182A500684860 /* RMCWelcomeInputView.m in Sources */,
 				21FCC60623F19E2800684860 /* RMCError.m in Sources */,
 				21FCC5DD23F1807700684860 /* merror.c in Sources */,
 				21FCC60323F19CF100684860 /* RMCList.m in Sources */,
-				21FCC5BC23F17BE300684860 /* ViewController.m in Sources */,
 				21FCC5B623F17BE300684860 /* AppDelegate.m in Sources */,
 				21FCC5EE23F1838000684860 /* MZTextField.m in Sources */,
 				21FCC5F623F193A000684860 /* RMCCommunication.m in Sources */,
@@ -397,21 +384,12 @@
 				21FCC5DC23F1807700684860 /* mbuffer.c in Sources */,
 				21FCC60C23F1B3A400684860 /* RMCCollection.m in Sources */,
 				21FCC5C723F17BE700684860 /* main.m in Sources */,
-				21FCC5B923F17BE300684860 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		21FCC5BD23F17BE300684860 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				21FCC5BE23F17BE300684860 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		21FCC5C223F17BE700684860 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -541,6 +519,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R96VZHJ56V;
 				INFOPLIST_FILE = "rpi-multimedia-controller/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -559,6 +538,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R96VZHJ56V;
 				INFOPLIST_FILE = "rpi-multimedia-controller/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

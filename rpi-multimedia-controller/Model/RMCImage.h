@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RMCImage : NSObject
+@interface RMCImage : NSObject <NSSecureCoding>
 
 @property (strong, nonatomic) UIImage  *image;
 @property (strong, nonatomic) NSString *identifier;

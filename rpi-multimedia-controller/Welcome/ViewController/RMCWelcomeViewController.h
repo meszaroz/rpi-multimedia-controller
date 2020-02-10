@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RMCWelcomeServerSelectorView : UIView
 
-@property (strong, nonatomic) IBOutlet RMCWelcomeInputView *serverInput;
+@property (strong, nonatomic) IBOutlet RMCWelcomeInputView *hostInput;
 @property (strong, nonatomic) IBOutlet RMCWelcomeInputView *portInput;
 
 @end

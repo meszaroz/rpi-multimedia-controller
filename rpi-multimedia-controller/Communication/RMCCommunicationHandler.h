@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol RMCCommunicationHandlerDelegate <NSObject>
 
+- (void)handler:(RMCCommunicationHandler*)handler didConnectToHost:(NSString *)host port:(uint16_t)port;
+- (void)handler:(RMCCommunicationHandler*)handler didDisconnectWithError:(nullable NSError *)err;
+
 - (void)handler:(RMCCommunicationHandler*)handler didReceiveError :(RMCError *)error;
 - (void)handler:(RMCCommunicationHandler*)handler didReceiveList  :(RMCList  *)list;
 - (void)handler:(RMCCommunicationHandler*)handler didReceiveImage :(RMCImage *)image;

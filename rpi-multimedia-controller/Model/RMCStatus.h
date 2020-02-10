@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RMCStatus : NSObject
+@interface RMCStatus : NSObject <NSSecureCoding>
 
 @property (strong, nonatomic) NSString *act;
 @property (        nonatomic) BOOL      play;

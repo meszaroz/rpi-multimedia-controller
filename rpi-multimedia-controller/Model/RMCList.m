@@ -11,6 +11,10 @@
 
 @implementation RMCList
 
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
 - (instancetype)init {
     self = [super init];
     
@@ -31,6 +35,20 @@
             
             clearListContainer(cont);
         }
+    }
+    
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:_list forKey:@"list"];
+}
+
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    
+    if (self) {
+        _list = [aDecoder decodeObjectForKey:@"list"];
     }
     
     return self;

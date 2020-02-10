@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RMCError : NSObject
+@interface RMCError : NSObject <NSSecureCoding>
 
 @property (strong, nonatomic) NSString *message;
 

@@ -54,15 +54,15 @@
     [_connectionTitleLabel autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(10, 0, 0, 0) excludingEdge:ALEdgeBottom];
     [_connectionTitleLabel autoSetDimension:ALDimensionHeight toSize:30];
     
-    _serverInput = [RMCWelcomeInputView new];
-    _serverInput.tintColor = [UIColor grayColor];
-    _serverInput.textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    _serverInput.textField.placeholder = @"Host";
-    [_connectionView addSubview:_serverInput];
-    [_serverInput autoPinEdgeToSuperviewEdge:ALEdgeLeft  withInset:10];
-    [_serverInput autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10];
-    [_serverInput autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_connectionTitleLabel withOffset:10];
-    [_serverInput autoSetDimension:ALDimensionHeight toSize:30];
+    _hostInput = [RMCWelcomeInputView new];
+    _hostInput.tintColor = [UIColor grayColor];
+    _hostInput.textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _hostInput.textField.placeholder = @"Host";
+    [_connectionView addSubview:_hostInput];
+    [_hostInput autoPinEdgeToSuperviewEdge:ALEdgeLeft  withInset:10];
+    [_hostInput autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10];
+    [_hostInput autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_connectionTitleLabel withOffset:10];
+    [_hostInput autoSetDimension:ALDimensionHeight toSize:30];
     
     _portInput = [RMCWelcomeInputView new];
     _portInput.tintColor = [UIColor grayColor];
@@ -72,6 +72,7 @@
     [_portInput autoPinEdgeToSuperviewEdge:ALEdgeLeft   withInset:10];
     [_portInput autoPinEdgeToSuperviewEdge:ALEdgeRight  withInset:10];
     [_portInput autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:20];
+    [_portInput autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_hostInput withOffset:10];
     [_portInput autoSetDimension:ALDimensionHeight toSize:30];
 }
 
@@ -80,35 +81,38 @@
 @implementation RMCWelcomeServerSelectorView(Empty)
 
 - (BOOL)allFieldsEmpty {
-    return _serverInput.textField.text.length == 0
-          && _portInput.textField.text.length == 0;
+    return _hostInput.textField.text.length == 0
+        && _portInput.textField.text.length == 0;
 }
 
 @end
 
 #import "MZActivityIndicatorOverlayView.h"
+#import "RMCCommunicationController.h"
+#import "RMCCollectionViewController.h"
 
 @interface RMCWelcomeViewController ()
-
 @end
 
 @implementation RMCWelcomeViewController
 
+- (instancetype)init {
+    self = [super init];
+    
+    if (self) {
+        [self registerNotifications];
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"Welcome";
+    
     [self setupUI];
     [self activateUI];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (void)setupUI {
     [self setupMain    ];
@@ -119,12 +123,64 @@
 }
 
 - (void)activateUI {
-    [self.view addSubview:_activityView];
+    [self.view addSubview:_serverSelectorView];
+    [self.view addSubview:_startButton       ];
+    
+    [_startButton autoAlignAxisToSuperviewAxis:ALAxisVertical];
+    [_startButton autoSetDimensionsToSize:CGSizeMake(280, 45)];
+    [_startButton autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:50];
+    
+    [_serverSelectorView autoAlignAxisToSuperviewAxis:ALAxisVertical];
+    [_serverSelectorView autoAlignAxisToSuperviewAxis:ALAxisHorizontal].constant = -50;
+    [_serverSelectorView autoSetDimension:ALDimensionWidth toSize:280];
+    
+    [self.navigationController.view addSubview:_activityView];
     [_activityView autoPinEdgesToSuperviewEdges];
 }
 
 - (IBAction)connectAction:(id)sender {
-    [self performSegueWithIdentifier:@"CollectionViewController" sender:self];
+    NSString *host = _serverSelectorView.hostInput.textField.text;
+    NSString *port = _serverSelectorView.portInput.textField.text;
+    
+    if (host.length > 0 && port.length > 0 && port.intValue > 0) {
+        __weak typeof(self) weakSelf = self;
+        [_activityView setHidden:NO animated:YES completion:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerConnectNotification object:weakSelf userInfo:@{ @"host" : host, @"port" : @(port.intValue) }];
+        }];
+    }
+    else {
+        [self showWarning:@"Wrong host and/or port settings"];
+    }
+}
+
+- (void)didConnect:(NSNotification*)notification {
+    __weak typeof(self) weakSelf = self;
+    [_activityView setHidden:YES animated:YES completion:^{
+        if (notification.userInfo) {
+            NSError *error = notification.userInfo[@"error"];
+            if (error) {
+                [weakSelf showWarning:error.localizedDescription];
+            }
+            else {
+                RMCCollectionViewController *collectionVC = [RMCCollectionViewController new];
+                [weakSelf.navigationController pushViewController:collectionVC animated:YES];
+            }
+        }
+    }];
+}
+
+- (void)dealloc {
+    [self deregisterNotifications];
+}
+
+- (void)registerNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didConnect:) name:kCommunicationControllerDidConnectNotification    object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didConnect:) name:kCommunicationControllerDidDisconnectNotification object:nil];
+}
+
+- (void)deregisterNotifications {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kCommunicationControllerDidConnectNotification    object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kCommunicationControllerDidDisconnectNotification object:nil];
 }
 
 #pragma mark - local initialization
@@ -134,6 +190,7 @@
 - (void)setupButton {
     _startButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _startButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+    [_startButton addTarget:self action:@selector(connectAction:) forControlEvents:UIControlEventTouchUpInside];
     [_startButton setTitle:@"CONNECT"                    forState:UIControlStateNormal     ];
     [_startButton setTitleColor:[UIColor whiteColor]     forState:UIControlStateNormal     ];
     [_startButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
@@ -149,6 +206,13 @@
 }
 
 - (void)setupLogo {
+}
+
+#pragma mark - helper
+- (void)showWarning:(NSString*)message {
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Warning" message:message preferredStyle:UIAlertControllerStyleAlert];
+    [controller addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 @end
