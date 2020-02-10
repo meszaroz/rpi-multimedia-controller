@@ -7,8 +7,9 @@
 //
 
 #import "RMCCollectionViewController.h"
-#import "RMCCommunication.h"
+#import "RMCCommunicationController.h"
 #import "RMCCollection.h"
+#import "RMCSupport.h"
 
 @implementation RMCCollectionViewCell
 @end
@@ -17,83 +18,118 @@
 @end
 
 @implementation RMCCollectionViewController {
-    RMCCommunication        *_communication;
-    RMCCommunicationHandler *_handler;
+    UIBarButtonItem *_playingButton;
+    UIBarButtonItem *_disconnectButton;
 }
 
 - (instancetype)init {
     self = [super init];
     
     if (self) {
-        [self initialize];
+        _collection = [RMCCollection new];
+        [self registerNotifications];
     }
     
     return self;
-}
-
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    
-    if (self) {
-        [self initialize];
-    }
-    
-    return self;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)coder {
-    self = [super initWithCoder:coder];
-    
-    if (self) {
-        [self initialize];
-    }
-    
-    return self;
-}
-
-- (void)initialize {
-    _handler       = [RMCCommunicationHandler new];
-    _communication = [RMCCommunication        new];
-    _collection    = [RMCCollection           new];
-    
-    _handler      .interface = _communication;
-    _handler      .delegate  = self;
-    _communication.delegate = _handler;
-    
-    [_communication connectToHost:@"192.168.0.199" onPort:61486 error:nil];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self setupBarButtons];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerRequestListNotification   object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerRequestStatusNotification object:self];
 }
 
-#pragma mark - Communication Handler Delegate
-- (void)handler:(RMCCommunicationHandler*)handler didReceiveError :(RMCError *)error {
+- (void)setupBarButtons {
+    _playingButton    = [[UIBarButtonItem alloc] initWithTitle:@"Playing"    style:UIBarButtonItemStylePlain target:self action:@selector(playingAction:   )];
+    _disconnectButton = [[UIBarButtonItem alloc] initWithTitle:@"Disconnect" style:UIBarButtonItemStylePlain target:self action:@selector(disconnectAction:)];
+
+    self.navigationItem.rightBarButtonItem = _playingButton;
+    self.navigationItem.leftBarButtonItem  = _disconnectButton;
+    
+    _playingButton.enabled = NO;
+}
+
+- (void)playingAction:(id)sender {
     
 }
 
-- (void)handler:(RMCCommunicationHandler*)handler didReceiveList  :(RMCList  *)list {
-    NSArray *items = _collection.items;
-    _collection.items = [RMCCollection itemsFromList:list.list];
-    [_collection mergeWithItems:items];
-    
-    [self.collectionView reloadData];
-    
-    for (RMCImage *item in _collection.items) {
-        if (!item.image) {
-            [handler requestImage:item];
+- (void)disconnectAction:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerDisconnectNotification object:self];
+}
+
+- (void)didDisconnect:(NSNotification*)notification {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)dealloc {
+    [self deregisterNotifications];
+}
+
+- (void)registerNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDisconnect: ) name:kCommunicationControllerDidDisconnectNotification    object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveData:) name:kCommunicationControllerDidReceiveListNotification   object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveData:) name:kCommunicationControllerDidReceiveImageNotification  object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveData:) name:kCommunicationControllerDidReceiveStatusNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveData:) name:kCommunicationControllerDidReceiveErrorNotification  object:nil];
+}
+
+- (void)deregisterNotifications {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kCommunicationControllerDidDisconnectNotification    object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kCommunicationControllerDidReceiveListNotification   object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kCommunicationControllerDidReceiveImageNotification  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kCommunicationControllerDidReceiveStatusNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kCommunicationControllerDidReceiveErrorNotification  object:nil];
+}
+
+#pragma mark - Data
+- (void)didReceiveData:(NSNotification*)notification {
+    id object = notification.userInfo[@"object"];
+    if (object) {
+        /**/ if ([notification.name isEqualToString:kCommunicationControllerDidReceiveListNotification  ]) { [self didReceiveList  :object]; }
+        else if ([notification.name isEqualToString:kCommunicationControllerDidReceiveImageNotification ]) { [self didReceiveImage :object]; }
+        else if ([notification.name isEqualToString:kCommunicationControllerDidReceiveStatusNotification]) { [self didReceiveStatus:object]; }
+        else if ([notification.name isEqualToString:kCommunicationControllerDidReceiveErrorNotification ]) { [self didReceiveError :object]; }
+    }
+}
+
+- (void)didReceiveError:(RMCError *)error {
+    if ([error isKindOfClass:RMCError.class] && error.message && error.message.length > 0) {
+        [RMCSupport showWarning:error.message inViewController:self];
+    }
+}
+
+- (void)didReceiveList:(RMCList*)list {
+    if ([list isKindOfClass:RMCList.class]) {
+        /* store list */
+        [_collection setItemsMerged:[RMCCollection itemsFromList:list.list]];
+        
+        /* reload collection */
+        [self.collectionView reloadData];
+        
+        /* request missing images */
+        for (RMCImage *item in _collection.items) {
+            if (!item.image) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerRequestImageNotification object:self userInfo:@{ @"object" : item }];
+            }
         }
     }
 }
 
-- (void)handler:(RMCCommunicationHandler*)handler didReceiveImage :(RMCImage *)image {
-    [_collection updateItem:image];
-    [self.collectionView reloadData];
+- (void)didReceiveImage:(RMCImage *)image {
+    if ([image isKindOfClass:RMCImage.class]) {
+        /* update image */
+        [_collection updateItem:image];
+        
+        /* reload collection */
+        [self.collectionView reloadData];
+    }
 }
 
-- (void)handler:(RMCCommunicationHandler*)handler didReceiveStatus:(RMCStatus*)status {
-    
+- (void)didReceiveStatus:(RMCStatus*)status {
+    _playingButton.enabled = [status isKindOfClass:RMCStatus.class] && status.act && status.act.length > 0;
 }
 
 #pragma mark - Collection View Delegate
@@ -114,14 +150,6 @@
     RMCCollectionViewCell *obj = (RMCCollectionViewCell*)cell;
     obj.imageView.image = item.image;
     obj.title.text      = item.identifier.lastPathComponent;
-}
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 
 @end

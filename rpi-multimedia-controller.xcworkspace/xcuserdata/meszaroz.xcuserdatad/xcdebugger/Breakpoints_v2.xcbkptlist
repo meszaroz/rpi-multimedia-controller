@@ -7,23 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BC44F60D-5192-43CE-AF30-1FD149D1E048"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
-            timestampString = "0"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-initialize"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "BA5CF136-9AB0-4416-ACEE-655560DD8C19"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -34,7 +17,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
             endingLineNumber = "114"
-            landmarkName = "-collectionView:willDisplayCell:forItemAtIndexPath:"
+            landmarkName = "-didReceiveList:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,8 +34,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
             endingLineNumber = "79"
-            landmarkName = "-handler:didReceiveList:"
-            landmarkType = "7">
+            landmarkName = "RMCCollectionViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

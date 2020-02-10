@@ -90,6 +90,7 @@
 #import "MZActivityIndicatorOverlayView.h"
 #import "RMCCommunicationController.h"
 #import "RMCCollectionViewController.h"
+#import "RMCSupport.h"
 
 @interface RMCWelcomeViewController ()
 @end
@@ -149,7 +150,7 @@
         }];
     }
     else {
-        [self showWarning:@"Wrong host and/or port settings"];
+        [RMCSupport showWarning:@"Wrong host and/or port settings" inViewController:self];
     }
 }
 
@@ -159,7 +160,7 @@
         if (notification.userInfo) {
             NSError *error = notification.userInfo[@"error"];
             if (error) {
-                [weakSelf showWarning:error.localizedDescription];
+                [RMCSupport showWarning:error.localizedDescription inViewController:weakSelf];
             }
             else {
                 RMCCollectionViewController *collectionVC = [RMCCollectionViewController new];
@@ -206,13 +207,6 @@
 }
 
 - (void)setupLogo {
-}
-
-#pragma mark - helper
-- (void)showWarning:(NSString*)message {
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Warning" message:message preferredStyle:UIAlertControllerStyleAlert];
-    [controller addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-    [self presentViewController:controller animated:YES completion:nil];
 }
 
 @end

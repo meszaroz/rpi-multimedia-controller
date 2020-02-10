@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class RMCCollection;
 
-@interface RMCCollectionViewController : UICollectionViewController <RMCCommunicationHandlerDelegate>
+@interface RMCCollectionViewController : UICollectionViewController
 
 @property (strong, nonatomic, readonly) RMCCollection *collection;
 

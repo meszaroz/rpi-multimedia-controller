@@ -31,8 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 /* create items from list */
 + (NSArray<RMCImage*>*)itemsFromList:(NSArray<NSString*>*)list;
 
-/* merge data from other collection (ex. list changed, but images can be reused) */
-- (void)mergeWithItems:(NSArray<RMCImage*>*)items;
+/* set items and reuse old item images */
+- (void)setItemsMerged:(NSArray<RMCImage*>*)items;
 
 @end
 

@@ -9,6 +9,7 @@
 #import "RMCCommunicationController.h"
 #import "RMCCommunication.h"
 #import "RMCCommunicationHandler.h"
+#import "GCDAsyncSocket.h"
 
 // Notification
 NSString * const kCommunicationControllerConnectNotification          = @"kCommunicationControllerConnectNotification";
@@ -143,7 +144,12 @@ NSString * const kCommunicationControllerSendStatusNotification       = @"kCommu
 }
 
 - (void)disconnect:(NSNotification*)notification {
-    [_communication disconnect];
+    if (_communication.socket.isConnected) {
+        [_communication disconnect];
+    }
+    else {
+        [self handler:_handler didDisconnectWithError:nil];
+    }
 }
 
 - (void)requestList:(NSNotification*)notification {

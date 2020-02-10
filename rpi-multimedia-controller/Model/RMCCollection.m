@@ -73,9 +73,14 @@
     return out ? [out copy] : nil;
 }
 
-- (void)mergeWithItems:(NSArray<RMCImage *> *)items {
+- (void)setItemsMerged:(NSArray<RMCImage *> *)items {
     if (items) {
-        for (RMCImage *item in items) {
+        /* set new items */
+        NSArray<RMCImage*> *tmp = self.items;
+        self.items = items;
+        
+        /* merge - reuse images */
+        for (RMCImage *item in tmp) {
             if (item.image) {
                 [self updateItem:item];
             }

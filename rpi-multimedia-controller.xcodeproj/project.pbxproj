@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2148802923F1EBBF009C45C6 /* RMCCommunicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2148802823F1EBBF009C45C6 /* RMCCommunicationController.m */; };
+		2148802D23F207DD009C45C6 /* RMCSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2148802C23F207DD009C45C6 /* RMCSupport.m */; };
 		21FCC5B623F17BE300684860 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FCC5B523F17BE300684860 /* AppDelegate.m */; };
 		21FCC5C123F17BE700684860 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21FCC5C023F17BE700684860 /* Assets.xcassets */; };
 		21FCC5C423F17BE700684860 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21FCC5C223F17BE700684860 /* LaunchScreen.storyboard */; };
@@ -36,6 +37,8 @@
 /* Begin PBXFileReference section */
 		2148802723F1EBBF009C45C6 /* RMCCommunicationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMCCommunicationController.h; sourceTree = "<group>"; };
 		2148802823F1EBBF009C45C6 /* RMCCommunicationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMCCommunicationController.m; sourceTree = "<group>"; };
+		2148802B23F207DD009C45C6 /* RMCSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMCSupport.h; sourceTree = "<group>"; };
+		2148802C23F207DD009C45C6 /* RMCSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMCSupport.m; sourceTree = "<group>"; };
 		21FCC5B123F17BE300684860 /* rpi-multimedia-controller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rpi-multimedia-controller.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21FCC5B423F17BE300684860 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		21FCC5B523F17BE300684860 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -97,6 +100,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2148802A23F207C3009C45C6 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				2148802B23F207DD009C45C6 /* RMCSupport.h */,
+				2148802C23F207DD009C45C6 /* RMCSupport.m */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		21FCC5A823F17BE300684860 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +130,7 @@
 		21FCC5B323F17BE300684860 /* rpi-multimedia-controller */ = {
 			isa = PBXGroup;
 			children = (
+				2148802A23F207C3009C45C6 /* Support */,
 				21FCC5F323F1937B00684860 /* Communication */,
 				21FCC5E923F1832E00684860 /* External */,
 				21FCC5CD23F1804800684860 /* Common */,
@@ -369,6 +382,7 @@
 				21FCC5E423F1820000684860 /* RMCWelcomeViewController.m in Sources */,
 				21FCC5F223F1846700684860 /* MZActivityIndicatorOverlayView.m in Sources */,
 				21FCC5DE23F1807700684860 /* mlist.c in Sources */,
+				2148802D23F207DD009C45C6 /* RMCSupport.m in Sources */,
 				2148802923F1EBBF009C45C6 /* RMCCommunicationController.m in Sources */,
 				21FCC60923F1A64900684860 /* RMCCommunicationHandler.m in Sources */,
 				21FCC5E823F182A500684860 /* RMCWelcomeInputView.m in Sources */,
