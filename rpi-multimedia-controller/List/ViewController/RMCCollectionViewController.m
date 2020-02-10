@@ -18,15 +18,20 @@
 @end
 
 @implementation RMCCollectionViewController {
+    UICollectionViewFlowLayout *_layout;
     UIBarButtonItem *_playingButton;
     UIBarButtonItem *_disconnectButton;
 }
 
 - (instancetype)init {
-    self = [super init];
+    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    
+    self = [super initWithCollectionViewLayout:layout];
     
     if (self) {
         _collection = [RMCCollection new];
+        [self setupCollectionView  ];
         [self registerNotifications];
     }
     
@@ -40,6 +45,12 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerRequestListNotification   object:self];
     [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerRequestStatusNotification object:self];
+}
+
+- (void)setupCollectionView {
+    self.collectionView.delegate   = self;
+    self.collectionView.dataSource = self;
+    [self.collectionView registerClass:RMCCollectionViewCell.class forCellWithReuseIdentifier:@"Cell"];
 }
 
 - (void)setupBarButtons {
@@ -150,6 +161,31 @@
     RMCCollectionViewCell *obj = (RMCCollectionViewCell*)cell;
     obj.imageView.image = item.image;
     obj.title.text      = item.identifier.lastPathComponent;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    /* ... */
+}
+
+#pragma mark - FlowLayout
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 10;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    CGFloat inset = [self collectionView:collectionView layout:collectionViewLayout minimumInteritemSpacingForSectionAtIndex:0];
+    return UIEdgeInsetsMake(0, inset, 0, inset);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return [self calculatedCellSize];
+}
+
+#pragma mark - Support
+- (CGSize)calculatedCellSize {
+    CGFloat width = MAX(100, self.view.frame.size.height - 2 * [self collectionView:self.collectionView layout:self.collectionView.collectionViewLayout minimumInteritemSpacingForSectionAtIndex:0]);
+    return CGSizeMake(width, width * 1.5);
 }
 
 @end

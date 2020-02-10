@@ -12,12 +12,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
-            timestampString = "0"
+            timestampString = "603066155.445217"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "-didReceiveList:"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "-collectionView:willDisplayCell:forItemAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -29,13 +29,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
-            timestampString = "0"
+            timestampString = "603066155.445485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "RMCCollectionViewController"
-            landmarkType = "3">
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "-didReceiveList:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -45,11 +45,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rpi-multimedia-controller/Communication/RMCCommunicationController.m"
-            timestampString = "603063385.181036"
+            timestampString = "603066155.4456559"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "-connect:"
             landmarkType = "7">
          </BreakpointContent>
@@ -61,11 +61,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rpi-multimedia-controller/Welcome/ViewController/RMCWelcomeViewController.m"
-            timestampString = "603063385.181093"
+            timestampString = "603066155.4457051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "-setupSelector"
             landmarkType = "7">
          </BreakpointContent>
@@ -77,7 +77,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rpi-multimedia-controller/Welcome/ViewController/RMCWelcomeViewController.m"
-            timestampString = "603063385.181352"
+            timestampString = "603066155.44575"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
@@ -93,11 +93,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rpi-multimedia-controller/Welcome/ViewController/RMCWelcomeViewController.m"
-            timestampString = "603063385.181543"
+            timestampString = "603066155.445824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "-activateUI"
             landmarkType = "7">
          </BreakpointContent>
@@ -109,11 +109,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rpi-multimedia-controller/Communication/RMCCommunicationController.m"
-            timestampString = "603063385.181721"
+            timestampString = "603066155.445866"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "-connect:"
             landmarkType = "7">
          </BreakpointContent>
@@ -125,11 +125,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rpi-multimedia-controller/Communication/RMCCommunicationController.m"
-            timestampString = "603063385.181759"
+            timestampString = "603066155.445901"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-handler:didConnectToHost:port:"
             landmarkType = "7">
          </BreakpointContent>
@@ -141,11 +141,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rpi-multimedia-controller/Communication/RMCCommunicationController.m"
-            timestampString = "603063385.1817909"
+            timestampString = "603066155.445953"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "-handler:didDisconnectWithError:"
             landmarkType = "7">
          </BreakpointContent>
@@ -157,11 +157,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rpi-multimedia-controller/Welcome/ViewController/RMCWelcomeViewController.m"
-            timestampString = "603063385.181826"
+            timestampString = "603066155.445998"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "-didConnect:"
             landmarkType = "7">
          </BreakpointContent>
