@@ -23,8 +23,8 @@ static void clearError(ErrorContainer *cont) {
 
 static TSize containerSize(const ErrorContainer* const cont) {
     TSize out = 0;
-    if (cont) {
-        out += cont->message ? strlen(cont->message) + 1 : sizeof(char);
+    if (cont && cont->message) {
+        out += strlen(cont->message) + 1;
     }
     return out;
 }

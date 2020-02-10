@@ -25,10 +25,11 @@ static void clearStatus(StatusContainer *cont) {
     initStatusContainer(cont);
 }
 
+/* if no actual file, size is 0 */
 static TSize containerSize(const StatusContainer* const cont) {
     TSize out = 0;
-    if (cont) {
-        out += cont->act ? strlen(cont->act)+1 : sizeof(char);
+    if (cont && cont->act) {
+        out += strlen(cont->act ) + 1;
         out += sizeof(cont->play);
         out += sizeof(cont->dura);
         out += sizeof(cont->pos );

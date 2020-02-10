@@ -25,9 +25,19 @@
     return self;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    
+    if (self) {
+        [self setupUI];
+    }
+    
+    return self;
+}
+
 - (void)setupUI {
     _connectionView = [UIView new];
-    _connectionView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.95];
+    _connectionView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.05];
     _connectionView.layer.cornerRadius = 5;
     _connectionView.clipsToBounds = YES;
     
@@ -35,13 +45,14 @@
     [_connectionView autoPinEdgesToSuperviewEdges];
     
     _connectionTitleLabel = [UILabel new];
+    _connectionTitleLabel.text = @"Connect to server";
     _connectionTitleLabel.textAlignment   = NSTextAlignmentCenter;
     _connectionTitleLabel.textColor       = [UIColor darkGrayColor];
     _connectionTitleLabel.backgroundColor = [UIColor clearColor];
     
     [_connectionView addSubview:_connectionTitleLabel];
     [_connectionTitleLabel autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(10, 0, 0, 0) excludingEdge:ALEdgeBottom];
-    [_connectionTitleLabel autoSetDimension:ALDimensionHeight toSize:20];
+    [_connectionTitleLabel autoSetDimension:ALDimensionHeight toSize:30];
     
     _serverInput = [RMCWelcomeInputView new];
     _serverInput.tintColor = [UIColor grayColor];
@@ -61,7 +72,6 @@
     [_portInput autoPinEdgeToSuperviewEdge:ALEdgeLeft   withInset:10];
     [_portInput autoPinEdgeToSuperviewEdge:ALEdgeRight  withInset:10];
     [_portInput autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:20];
-    [_portInput autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_serverInput withOffset:10];
     [_portInput autoSetDimension:ALDimensionHeight toSize:30];
 }
 
@@ -109,19 +119,12 @@
 }
 
 - (void)activateUI {
-    [self.view addSubview:_serverSelectorView];
-    [self.view addSubview:_startButton];
-    
-    [_serverSelectorView autoSetDimension:ALDimensionWidth toSize:280];
-    [_serverSelectorView autoAlignAxisToSuperviewAxis:ALAxisVertical];
-    [_serverSelectorView autoAlignAxisToSuperviewAxis:ALAxisHorizontal].constant = -50;
-    
-    [_startButton autoAlignAxisToSuperviewAxis:ALAxisVertical];
-    [_startButton autoSetDimensionsToSize:CGSizeMake(280, 45)];
-    [_startButton autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:40];
-    
     [self.view addSubview:_activityView];
     [_activityView autoPinEdgesToSuperviewEdges];
+}
+
+- (IBAction)connectAction:(id)sender {
+    [self performSegueWithIdentifier:@"CollectionViewController" sender:self];
 }
 
 #pragma mark - local initialization
@@ -130,8 +133,6 @@
 
 - (void)setupButton {
     _startButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_startButton addTarget:self action:@selector(startAction) forControlEvents:UIControlEventTouchUpInside];
-    
     _startButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
     [_startButton setTitle:@"CONNECT"                    forState:UIControlStateNormal     ];
     [_startButton setTitleColor:[UIColor whiteColor]     forState:UIControlStateNormal     ];

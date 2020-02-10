@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet MZActivityIndicatorOverlayView *activityView;
 @property (strong, nonatomic) IBOutlet RMCWelcomeServerSelectorView   *serverSelectorView;
 
+- (IBAction)connectAction:(id)sender;
+
 @end
 
 NS_ASSUME_NONNULL_END
