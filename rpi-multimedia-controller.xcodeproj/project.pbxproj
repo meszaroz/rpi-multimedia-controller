@@ -14,6 +14,16 @@
 		21FCC5C123F17BE700684860 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21FCC5C023F17BE700684860 /* Assets.xcassets */; };
 		21FCC5C423F17BE700684860 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21FCC5C223F17BE700684860 /* LaunchScreen.storyboard */; };
 		21FCC5C723F17BE700684860 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FCC5C623F17BE700684860 /* main.m */; };
+		21FCC5DB23F1807700684860 /* mstatus.c in Sources */ = {isa = PBXBuildFile; fileRef = 21FCC5CE23F1807700684860 /* mstatus.c */; };
+		21FCC5DC23F1807700684860 /* mbuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 21FCC5D023F1807700684860 /* mbuffer.c */; };
+		21FCC5DD23F1807700684860 /* merror.c in Sources */ = {isa = PBXBuildFile; fileRef = 21FCC5D323F1807700684860 /* merror.c */; };
+		21FCC5DE23F1807700684860 /* mlist.c in Sources */ = {isa = PBXBuildFile; fileRef = 21FCC5D523F1807700684860 /* mlist.c */; };
+		21FCC5DF23F1807700684860 /* mcommon.c in Sources */ = {isa = PBXBuildFile; fileRef = 21FCC5D623F1807700684860 /* mcommon.c */; };
+		21FCC5E023F1807700684860 /* mimage.c in Sources */ = {isa = PBXBuildFile; fileRef = 21FCC5DA23F1807700684860 /* mimage.c */; };
+		21FCC5E423F1820000684860 /* RMCWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FCC5E323F1820000684860 /* RMCWelcomeViewController.m */; };
+		21FCC5E823F182A500684860 /* RMCWelcomeInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FCC5E723F182A500684860 /* RMCWelcomeInputView.m */; };
+		21FCC5EE23F1838000684860 /* MZTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FCC5EC23F1838000684860 /* MZTextField.m */; };
+		21FCC5F223F1846700684860 /* MZActivityIndicatorOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FCC5F123F1846700684860 /* MZActivityIndicatorOverlayView.m */; };
 		7E66B281B1E7407D1682D909 /* libPods-rpi-multimedia-controller.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78665A75CA531D6214F36D6C /* libPods-rpi-multimedia-controller.a */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +40,27 @@
 		21FCC5C323F17BE700684860 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21FCC5C523F17BE700684860 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21FCC5C623F17BE700684860 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		21FCC5CE23F1807700684860 /* mstatus.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mstatus.c; sourceTree = "<group>"; };
+		21FCC5CF23F1807700684860 /* mstatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mstatus.h; sourceTree = "<group>"; };
+		21FCC5D023F1807700684860 /* mbuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mbuffer.c; sourceTree = "<group>"; };
+		21FCC5D123F1807700684860 /* mlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mlist.h; sourceTree = "<group>"; };
+		21FCC5D223F1807700684860 /* mimage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mimage.h; sourceTree = "<group>"; };
+		21FCC5D323F1807700684860 /* merror.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = merror.c; sourceTree = "<group>"; };
+		21FCC5D423F1807700684860 /* merror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = merror.h; sourceTree = "<group>"; };
+		21FCC5D523F1807700684860 /* mlist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mlist.c; sourceTree = "<group>"; };
+		21FCC5D623F1807700684860 /* mcommon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mcommon.c; sourceTree = "<group>"; };
+		21FCC5D723F1807700684860 /* mbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mbuffer.h; sourceTree = "<group>"; };
+		21FCC5D823F1807700684860 /* mcommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcommon.h; sourceTree = "<group>"; };
+		21FCC5D923F1807700684860 /* mtypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mtypes.h; sourceTree = "<group>"; };
+		21FCC5DA23F1807700684860 /* mimage.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mimage.c; sourceTree = "<group>"; };
+		21FCC5E223F1820000684860 /* RMCWelcomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMCWelcomeViewController.h; sourceTree = "<group>"; };
+		21FCC5E323F1820000684860 /* RMCWelcomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMCWelcomeViewController.m; sourceTree = "<group>"; };
+		21FCC5E623F182A500684860 /* RMCWelcomeInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCWelcomeInputView.h; sourceTree = "<group>"; };
+		21FCC5E723F182A500684860 /* RMCWelcomeInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCWelcomeInputView.m; sourceTree = "<group>"; };
+		21FCC5EC23F1838000684860 /* MZTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTextField.m; sourceTree = "<group>"; };
+		21FCC5ED23F1838000684860 /* MZTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTextField.h; sourceTree = "<group>"; };
+		21FCC5F023F1846700684860 /* MZActivityIndicatorOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZActivityIndicatorOverlayView.h; sourceTree = "<group>"; };
+		21FCC5F123F1846700684860 /* MZActivityIndicatorOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZActivityIndicatorOverlayView.m; sourceTree = "<group>"; };
 		78665A75CA531D6214F36D6C /* libPods-rpi-multimedia-controller.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rpi-multimedia-controller.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE269BEB2D19D37D9D3B5020 /* Pods-rpi-multimedia-controller.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rpi-multimedia-controller.debug.xcconfig"; path = "Target Support Files/Pods-rpi-multimedia-controller/Pods-rpi-multimedia-controller.debug.xcconfig"; sourceTree = "<group>"; };
 		DDABBC3F9A1A473AD26AF36B /* Pods-rpi-multimedia-controller.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rpi-multimedia-controller.release.xcconfig"; path = "Target Support Files/Pods-rpi-multimedia-controller/Pods-rpi-multimedia-controller.release.xcconfig"; sourceTree = "<group>"; };
@@ -68,6 +99,9 @@
 		21FCC5B323F17BE300684860 /* rpi-multimedia-controller */ = {
 			isa = PBXGroup;
 			children = (
+				21FCC5E923F1832E00684860 /* External */,
+				21FCC5CD23F1804800684860 /* Common */,
+				21FCC5E123F181C600684860 /* Welcome */,
 				21FCC5B423F17BE300684860 /* AppDelegate.h */,
 				21FCC5B523F17BE300684860 /* AppDelegate.m */,
 				21FCC5B723F17BE300684860 /* SceneDelegate.h */,
@@ -81,6 +115,80 @@
 				21FCC5C623F17BE700684860 /* main.m */,
 			);
 			path = "rpi-multimedia-controller";
+			sourceTree = "<group>";
+		};
+		21FCC5CD23F1804800684860 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				21FCC5D023F1807700684860 /* mbuffer.c */,
+				21FCC5D723F1807700684860 /* mbuffer.h */,
+				21FCC5D623F1807700684860 /* mcommon.c */,
+				21FCC5D823F1807700684860 /* mcommon.h */,
+				21FCC5D323F1807700684860 /* merror.c */,
+				21FCC5D423F1807700684860 /* merror.h */,
+				21FCC5DA23F1807700684860 /* mimage.c */,
+				21FCC5D223F1807700684860 /* mimage.h */,
+				21FCC5D523F1807700684860 /* mlist.c */,
+				21FCC5D123F1807700684860 /* mlist.h */,
+				21FCC5CE23F1807700684860 /* mstatus.c */,
+				21FCC5CF23F1807700684860 /* mstatus.h */,
+				21FCC5D923F1807700684860 /* mtypes.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		21FCC5E123F181C600684860 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				21FCC5E523F1828300684860 /* View */,
+				21FCC5EF23F183BC00684860 /* ViewController */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		21FCC5E523F1828300684860 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				21FCC5E623F182A500684860 /* RMCWelcomeInputView.h */,
+				21FCC5E723F182A500684860 /* RMCWelcomeInputView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		21FCC5E923F1832E00684860 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				21FCC5EA23F1834000684860 /* Support */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		21FCC5EA23F1834000684860 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				21FCC5EB23F1836C00684860 /* View */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		21FCC5EB23F1836C00684860 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				21FCC5F023F1846700684860 /* MZActivityIndicatorOverlayView.h */,
+				21FCC5F123F1846700684860 /* MZActivityIndicatorOverlayView.m */,
+				21FCC5ED23F1838000684860 /* MZTextField.h */,
+				21FCC5EC23F1838000684860 /* MZTextField.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		21FCC5EF23F183BC00684860 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				21FCC5E223F1820000684860 /* RMCWelcomeViewController.h */,
+				21FCC5E323F1820000684860 /* RMCWelcomeViewController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		7F2A728E0F206BA97153D541 /* Frameworks */ = {
@@ -97,7 +205,6 @@
 				AE269BEB2D19D37D9D3B5020 /* Pods-rpi-multimedia-controller.debug.xcconfig */,
 				DDABBC3F9A1A473AD26AF36B /* Pods-rpi-multimedia-controller.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -197,8 +304,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21FCC5DF23F1807700684860 /* mcommon.c in Sources */,
+				21FCC5E023F1807700684860 /* mimage.c in Sources */,
+				21FCC5DB23F1807700684860 /* mstatus.c in Sources */,
+				21FCC5E423F1820000684860 /* RMCWelcomeViewController.m in Sources */,
+				21FCC5F223F1846700684860 /* MZActivityIndicatorOverlayView.m in Sources */,
+				21FCC5DE23F1807700684860 /* mlist.c in Sources */,
+				21FCC5E823F182A500684860 /* RMCWelcomeInputView.m in Sources */,
+				21FCC5DD23F1807700684860 /* merror.c in Sources */,
 				21FCC5BC23F17BE300684860 /* ViewController.m in Sources */,
 				21FCC5B623F17BE300684860 /* AppDelegate.m in Sources */,
+				21FCC5EE23F1838000684860 /* MZTextField.m in Sources */,
+				21FCC5DC23F1807700684860 /* mbuffer.c in Sources */,
 				21FCC5C723F17BE700684860 /* main.m in Sources */,
 				21FCC5B923F17BE300684860 /* SceneDelegate.m in Sources */,
 			);
