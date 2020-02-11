@@ -39,6 +39,7 @@
 		2148802823F1EBBF009C45C6 /* RMCCommunicationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMCCommunicationController.m; sourceTree = "<group>"; };
 		2148802B23F207DD009C45C6 /* RMCSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMCSupport.h; sourceTree = "<group>"; };
 		2148802C23F207DD009C45C6 /* RMCSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMCSupport.m; sourceTree = "<group>"; };
+		21C3397423F29457007DBD35 /* RMCModelProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMCModelProtocol.h; sourceTree = "<group>"; };
 		21FCC5B123F17BE300684860 /* rpi-multimedia-controller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rpi-multimedia-controller.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21FCC5B423F17BE300684860 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		21FCC5B523F17BE300684860 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -237,6 +238,7 @@
 		21FCC5F723F197F400684860 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				21C3397423F29457007DBD35 /* RMCModelProtocol.h */,
 				21FCC5F823F1981000684860 /* RMCStatus.h */,
 				21FCC5F923F1981000684860 /* RMCStatus.m */,
 				21FCC5FE23F19A5800684860 /* RMCImage.h */,
@@ -533,7 +535,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R96VZHJ56V;
 				INFOPLIST_FILE = "rpi-multimedia-controller/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -552,7 +554,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R96VZHJ56V;
 				INFOPLIST_FILE = "rpi-multimedia-controller/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

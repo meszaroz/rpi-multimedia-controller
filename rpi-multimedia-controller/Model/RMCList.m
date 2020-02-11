@@ -9,49 +9,90 @@
 #import "RMCList.h"
 #import "mlist.h"
 
+static NSString * const kListKey = @"list";
+
 @implementation RMCList
 
 + (BOOL)supportsSecureCoding {
     return YES;
 }
 
-- (instancetype)init {
+- (instancetype)initWithList:(nullable NSArray<NSString*>*)list {
     self = [super init];
     
     if (self) {
-        _list = nil;
+        _list = list;
     }
     
     return self;
+}
+
+- (instancetype)init {
+    return [self initWithList:nil];
 }
 
 - (instancetype)initWithBuffer:(Buffer*)buffer {
     self = [self init];
     
-    if (self && buffer && buffer->mode == List) {
-        ListContainer *cont = readListContainerFromBuffer(buffer);
-        if (cont) {
-            _list = [self.class listFromContainer:cont];
-            
-            clearListContainer(cont);
-        }
+    if (self) {
+        self.buffer = buffer;
     }
     
     return self;
 }
 
+#pragma mark - Secure Coder Protocol
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:_list forKey:@"list"];
+    [aCoder encodeObject:_list forKey:kListKey];
 }
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     
     if (self) {
-        _list = [aDecoder decodeObjectForKey:@"list"];
+        _list = [aDecoder decodeObjectForKey:kListKey];
     }
     
     return self;
+}
+
+#pragma mark - Buffer Protocol
+- (BOOL)setBuffer:(Buffer *)buffer {
+    BOOL out = buffer && buffer->mode == List;
+    
+    if (out) {
+        ListContainer *cont = readListContainerFromBuffer(buffer);
+        
+        out = cont != nil;
+        if (cont) {
+            _list = [self.class listFromContainer:cont];
+        }
+        
+        clearListContainer(cont);
+    }
+    
+    return out;
+}
+
+- (Buffer*)buffer {
+    Buffer *out = 0;
+    
+    /* set data */
+    ListContainer *cont = createListContainer(_list ? (TSize)_list.count : 0);
+    if (cont) {
+        /* pack data into container */
+        for (NSUInteger i = 0; _list && i < _list.count; ++i) {
+            copyString(&cont->list[i], [_list objectAtIndex:i].UTF8String);
+        }
+        
+        /* write to buffer */
+        out = writeListContainerToBuffer(cont);
+        
+        /* cleanup */
+        cont = clearListContainer(cont);
+    }
+    
+    return out;
 }
 
 #pragma mark - support

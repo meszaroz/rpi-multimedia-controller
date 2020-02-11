@@ -14,61 +14,21 @@
 @implementation RMCCommunicationHandler
 
 - (void)requestList {
-    if (_interface) {
-        /* collect data */
-        ListContainer *cont = createListContainer(0);
-        Buffer *buffer = writeListContainerToBuffer(cont);
-        
-        /* send */
-        [_interface writeData:buffer];
-        
-        /* cleanup */
-        buffer = clearBuffer(buffer);
-        cont   = clearListContainer(cont);
-    }
+    [self sendObject:[RMCList new]];
 }
 
-- (void)requestImage:(RMCImage *)image {
-    if (_interface && image && image.identifier && !image.image) {
-        /* collect data */
-        ImageContainer *cont = createImageContainer(image.identifier.UTF8String, 0);
-        Buffer *buffer = writeImageContainerToBuffer(cont);
-        
-        /* send */
-        [_interface writeData:buffer];
-        
-        /* cleanup */
-        buffer = clearBuffer(buffer);
-        cont   = clearImageContainer(cont);
+- (void)requestImage:(RMCImage *)obj {
+    if (obj && obj.identifier && !obj.image) {
+        [self sendObject:obj];
     }
 }
 
 - (void)requestStatus {
-    if (_interface) {
-        /* collect data */
-        StatusContainer *cont = createStatusContainer();
-        Buffer *buffer = writeStatusContainerToBuffer(cont);
-        
-        /* send */
-        [_interface writeData:buffer];
-        
-        /* cleanup */
-        buffer = clearBuffer(buffer);
-        cont   = clearStatusContainer(cont);
-    }
+    [self sendObject:[RMCStatus new]];
 }
 
-- (void)sendStatus:(RMCStatus*)status {
-    if (_interface && status) {
-        /* collect data */
-        Buffer *buffer = status.buffer;
-        
-        /* send */
-        [_interface writeData:buffer];
-        
-        /* cleanup */
-        buffer = clearBuffer(buffer);
-    }
+- (void)sendStatus:(RMCStatus*)obj {
+    [self sendObject:obj];
 }
 
 #pragma mark - Communication Delegate
@@ -93,6 +53,15 @@
             case Error : { if ([_delegate respondsToSelector:@selector(handler:didReceiveError: )]) { [_delegate handler:self didReceiveError :[[RMCError  alloc] initWithBuffer:data]]; } break; }
             default: break;
         }
+    }
+}
+
+#pragma mark - support
+- (void)sendObject:(id<RMCBufferProtocol>)obj {
+    if (_interface && obj) {
+        Buffer *buffer = obj.buffer;
+        [_interface writeData:buffer];
+        buffer = clearBuffer(buffer);
     }
 }
 

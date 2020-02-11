@@ -6,16 +6,15 @@
 //  Copyright © 2020. private. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "mbuffer.h"
+#import "RMCModelProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RMCError : NSObject <NSSecureCoding>
+@interface RMCError : NSObject <NSSecureCoding, RMCBufferProtocol>
 
 @property (strong, nonatomic) NSString *message;
 
-- (instancetype)initWithBuffer:(Buffer*)buffer;
+- (instancetype)initWithMessage:(nullable NSString*)message;
 
 @end
 

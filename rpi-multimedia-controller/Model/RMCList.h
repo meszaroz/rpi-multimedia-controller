@@ -6,16 +6,15 @@
 //  Copyright © 2020. private. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "mbuffer.h"
+#import "RMCModelProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RMCList : NSObject <NSSecureCoding>
+@interface RMCList : NSObject <NSSecureCoding, RMCBufferProtocol>
 
 @property (strong, nonatomic) NSArray<NSString*> *list;
 
-- (instancetype)initWithBuffer:(Buffer*)buffer;
+- (instancetype)initWithList:(nullable NSArray<NSString*>*)list;
 
 @end
 

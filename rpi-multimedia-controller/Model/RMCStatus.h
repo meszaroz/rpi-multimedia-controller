@@ -6,12 +6,11 @@
 //  Copyright © 2020. private. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "mbuffer.h"
+#import "RMCModelProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RMCStatus : NSObject <NSSecureCoding>
+@interface RMCStatus : NSObject <NSSecureCoding, RMCBufferProtocol>
 
 @property (strong, nonatomic) NSString *act;
 @property (        nonatomic) BOOL      play;
@@ -19,13 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (        nonatomic) NSInteger pos;
 @property (        nonatomic) NSInteger vol;
 
-- (instancetype)initWithBuffer:(Buffer*)buffer;
-
-@end
-
-@interface RMCStatus(Buffer)
-
-@property (nonatomic, readonly) Buffer *buffer;
+- (instancetype)initWithAct:(nullable NSString*)act play:(BOOL)play dura:(NSInteger)dura pos:(NSInteger)pos vol:(NSInteger)vol;
 
 @end
 

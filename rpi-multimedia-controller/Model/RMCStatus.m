@@ -9,85 +9,104 @@
 #import "RMCStatus.h"
 #import "mstatus.h"
 
+static NSString * const kActKey  = @"act";
+static NSString * const kPlayKey = @"play";
+static NSString * const kDuraKey = @"dura";
+static NSString * const kPosKey  = @"pos";
+static NSString * const kVolKey  = @"vol";
+
 @implementation RMCStatus
 
 + (BOOL)supportsSecureCoding {
     return YES;
 }
 
-- (instancetype)init {
+- (instancetype)initWithAct:(nullable NSString*)act play:(BOOL)play dura:(NSInteger)dura pos:(NSInteger)pos vol:(NSInteger)vol {
     self = [super init];
     
     if (self) {
-        _act  = nil;
-        _play = NO;
-        _dura = 0;
-        _pos  = 0;
-        _vol  = 0;
+        _act  = act;
+        _play = play;
+        _dura = dura;
+        _pos  = pos;
+        _vol  = vol;
     }
     
     return self;
+}
+
+- (instancetype)init {
+    return [self initWithAct:nil play:NO dura:0 pos:0 vol:0];
 }
 
 - (instancetype)initWithBuffer:(Buffer*)buffer {
     self = [self init];
     
-    if (self && buffer && buffer->mode == Status) {
-        StatusContainer *cont = readStatusContainerFromBuffer(buffer);
-        if (cont) {
-            if (cont->act) {
-                _act  = [NSString stringWithUTF8String:cont->act];
-                _play = cont->play;
-                _dura = cont->dura;
-                _pos  = cont->pos;
-                _vol  = cont->vol;
-            }
-            
-            clearStatusContainer(cont);
-        }
+    if (self) {
+        self.buffer = buffer;
     }
     
     return self;
 }
 
+#pragma mark - Secure Coder Protocol
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:  _act   forKey:@"act" ];
-    [aCoder encodeObject:@(_play) forKey:@"play"];
-    [aCoder encodeObject:@(_dura) forKey:@"dura"];
-    [aCoder encodeObject:@(_pos ) forKey:@"pos" ];
-    [aCoder encodeObject:@(_vol ) forKey:@"vol" ];
+    [aCoder encodeObject:  _act   forKey:kActKey ];
+    [aCoder encodeObject:@(_play) forKey:kPlayKey];
+    [aCoder encodeObject:@(_dura) forKey:kDuraKey];
+    [aCoder encodeObject:@(_pos ) forKey:kPosKey ];
+    [aCoder encodeObject:@(_vol ) forKey:kVolKey ];
 }
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     
     if (self) {
-        _act  = [aDecoder decodeObjectForKey:@"act" ];
-        _play = ((NSNumber*)[aDecoder decodeObjectForKey:@"play"]).boolValue;
-        _dura = ((NSNumber*)[aDecoder decodeObjectForKey:@"dura"]).intValue;
-        _pos  = ((NSNumber*)[aDecoder decodeObjectForKey:@"pos" ]).intValue;
-        _vol  = ((NSNumber*)[aDecoder decodeObjectForKey:@"vol" ]).intValue;
+        _act  = [aDecoder decodeObjectForKey:kActKey];
+        _play = ((NSNumber*)[aDecoder decodeObjectForKey:kPlayKey]).boolValue;
+        _dura = ((NSNumber*)[aDecoder decodeObjectForKey:kDuraKey]).intValue;
+        _pos  = ((NSNumber*)[aDecoder decodeObjectForKey:kPosKey ]).intValue;
+        _vol  = ((NSNumber*)[aDecoder decodeObjectForKey:kVolKey ]).intValue;
     }
     
     return self;
 }
 
-@end
-
-@implementation RMCStatus(Buffer)
+#pragma mark - Buffer Protocol
+- (BOOL)setBuffer:(Buffer *)buffer {
+    BOOL out = buffer && buffer->mode == Status;
+    
+    if (out) {
+        StatusContainer *cont = readStatusContainerFromBuffer(buffer);
+        
+        if (out) {
+            _act  = cont->act ? [NSString stringWithUTF8String:cont->act] : 0;
+            _play = cont->play;
+            _dura = cont->dura;
+            _pos  = cont->pos;
+            _vol  = cont->vol;
+        }
+            
+        clearStatusContainer(cont);
+    }
+    
+    return out;
+}
 
 - (Buffer*)buffer {
     Buffer *out = 0;
     
-    if (_act) {
-        /* set data*/
-        StatusContainer *cont = createStatusContainer();
-        cont->act  = strdup(_act.UTF8String);
-        cont->play = _play;
-        cont->dura = _dura;
-        cont->pos  = _pos;
-        cont->vol  = _vol;
-        
+    /* set data */
+    StatusContainer *cont = createStatusContainer();
+    if (cont) {
+        if (_act) {
+            copyString(&cont->act, _act.UTF8String);
+            cont->play = _play;
+            cont->dura = _dura;
+            cont->pos  = _pos;
+            cont->vol  = _vol;
+        }
+            
         /* write to buffer */
         out = writeStatusContainerToBuffer(cont);
         
@@ -99,3 +118,4 @@
 }
 
 @end
+

@@ -7,16 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "mbuffer.h"
+#import "RMCModelProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RMCImage : NSObject <NSSecureCoding>
+@interface RMCImage : NSObject <NSSecureCoding, RMCBufferProtocol>
 
 @property (strong, nonatomic) UIImage  *image;
 @property (strong, nonatomic) NSString *identifier;
 
-- (instancetype)initWithBuffer:(Buffer*)buffer;
 - (instancetype)initWithIdentifier:(NSString*)identifier;
 
 @end
