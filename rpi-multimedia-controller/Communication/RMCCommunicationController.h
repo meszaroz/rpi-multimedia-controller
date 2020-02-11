@@ -35,6 +35,9 @@ extern NSString * const kUserInfoObjectKey;
 // Controller
 @interface RMCCommunicationController : NSObject
 
+@property (copy, nonatomic, readonly) NSString *host;
+@property (      nonatomic, readonly) uint16_t  port;
+
 + (RMCCommunicationController*)defaultController;
 
 @end

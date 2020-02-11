@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RMCImage : NSObject <NSSecureCoding, RMCBufferProtocol>
 
+@property (        nonatomic, getter=isValid) BOOL valid;
+
 @property (strong, nonatomic) UIImage  *image;
 @property (strong, nonatomic) NSString *identifier;
 

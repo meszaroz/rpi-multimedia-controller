@@ -70,6 +70,14 @@ NSString * const kUserInfoObjectKey = @"object";
     return self;
 }
 
+- (NSString*)host {
+    return _communication.socket.connectedHost;
+}
+
+- (uint16_t)port {
+    return _communication.socket.connectedPort;
+}
+
 - (void)dealloc {
     [self deregisterNotifications];
 }

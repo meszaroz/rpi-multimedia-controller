@@ -41,6 +41,10 @@ static NSString * const kMessageKey = @"message";
     return self;
 }
 
+- (BOOL)isValid {
+    return _message && _message.length > 0;
+}
+
 #pragma mark - Secure Coder Protocol
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:_message forKey:kMessageKey];

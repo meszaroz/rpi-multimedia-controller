@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RMCStatus : NSObject <NSSecureCoding, RMCBufferProtocol>
 
+@property (        nonatomic, getter=isValid) BOOL valid;
+
 @property (strong, nonatomic) NSString *act;
 @property (        nonatomic) BOOL      play;
 @property (        nonatomic) NSInteger dura;

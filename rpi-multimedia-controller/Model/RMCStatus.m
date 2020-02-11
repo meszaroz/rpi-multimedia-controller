@@ -49,6 +49,10 @@ static NSString * const kVolKey  = @"vol";
     return self;
 }
 
+- (BOOL)isValid {
+    return _act && _act.length > 0;
+}
+
 #pragma mark - Secure Coder Protocol
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:  _act   forKey:kActKey ];

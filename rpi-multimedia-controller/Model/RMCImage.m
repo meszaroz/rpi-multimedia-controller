@@ -49,6 +49,10 @@ static NSString * const kImageKey      = @"image";
     return self;
 }
 
+- (BOOL)isValid {
+    return _identifier && _identifier.length > 0;
+}
+
 #pragma mark - Secure Coder Protocol
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:_identifier forKey:kIdentifierKey];

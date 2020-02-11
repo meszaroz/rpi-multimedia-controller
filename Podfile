@@ -4,4 +4,5 @@ platform :ios, '9.0'
 target "rpi-multimedia-controller" do
 pod 'PureLayout'
 pod 'CocoaAsyncSocket'
+pod 'MobileVLCKit'
 end

@@ -15,8 +15,8 @@
             timestampString = "603066155.445485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "-didReceiveData:"
             landmarkType = "7">
          </BreakpointContent>
@@ -32,8 +32,8 @@
             timestampString = "603066155.4456559"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "-connect:"
             landmarkType = "7">
          </BreakpointContent>
@@ -49,8 +49,8 @@
             timestampString = "603066155.4457051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "-setupButton"
             landmarkType = "7">
          </BreakpointContent>
@@ -100,8 +100,8 @@
             timestampString = "603066155.445866"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "-connect:"
             landmarkType = "7">
          </BreakpointContent>
@@ -117,8 +117,8 @@
             timestampString = "603066155.445901"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "-handler:didConnectToHost:port:"
             landmarkType = "7">
          </BreakpointContent>
@@ -134,8 +134,8 @@
             timestampString = "603066155.445953"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "-handler:didDisconnectWithError:"
             landmarkType = "7">
          </BreakpointContent>
@@ -167,8 +167,8 @@
             filePath = "rpi-multimedia-controller/Communication/RMCCommunicationController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "-requestList:"
             landmarkType = "7">
          </BreakpointContent>
@@ -183,8 +183,8 @@
             filePath = "rpi-multimedia-controller/Communication/RMCCommunicationController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "-requestStatus:"
             landmarkType = "7">
          </BreakpointContent>
@@ -199,8 +199,8 @@
             filePath = "rpi-multimedia-controller/Communication/RMCCommunicationController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "-handler:didReceiveList:"
             landmarkType = "7">
          </BreakpointContent>
@@ -215,8 +215,8 @@
             filePath = "rpi-multimedia-controller/Communication/RMCCommunicationController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "-handler:didReceiveImage:"
             landmarkType = "7">
          </BreakpointContent>
@@ -231,8 +231,8 @@
             filePath = "rpi-multimedia-controller/Communication/RMCCommunicationController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "-requestImage:"
             landmarkType = "7">
          </BreakpointContent>
@@ -247,8 +247,8 @@
             filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "-didReceiveStatus:"
             landmarkType = "7">
          </BreakpointContent>
@@ -263,8 +263,8 @@
             filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "-collectionView:willDisplayCell:forItemAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -279,8 +279,8 @@
             filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "-initWithFrame:"
             landmarkType = "7">
          </BreakpointContent>
@@ -311,8 +311,8 @@
             filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "-didReceiveImage:"
             landmarkType = "7">
          </BreakpointContent>
@@ -327,8 +327,8 @@
             filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "-searchBar:textDidChange:"
             landmarkType = "7">
          </BreakpointContent>
@@ -343,8 +343,8 @@
             filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "-didReceiveList:"
             landmarkType = "7">
          </BreakpointContent>
@@ -359,8 +359,8 @@
             filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "-collectionView:numberOfItemsInSection:"
             landmarkType = "7">
          </BreakpointContent>
@@ -375,8 +375,8 @@
             filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "-collectionView:willDisplayCell:forItemAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -391,8 +391,8 @@
             filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
             landmarkName = "-searchBar:textDidChange:"
             landmarkType = "7">
          </BreakpointContent>
@@ -439,9 +439,201 @@
             filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
             landmarkName = "-setupMain"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "03191203-FA89-45AE-BA0F-467EB39D0E89"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "-collectionView:didSelectItemAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "752AEBF7-71D6-4A9C-8DE9-97036DCC760B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
+            landmarkName = "-itemSelected:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2336980-2B29-40A4-AF79-B055EBC0F5FE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rpi-multimedia-controller/Communication/RMCCommunicationController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "-sendStatus:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "06A2AD2D-EC60-464A-A8F6-D604D91BF4D7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
+            landmarkName = "-itemSelected:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C0E455B-2E5F-432A-A841-3F3D6B2BC1BB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "-collectionView:willDisplayCell:forItemAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6F282E27-33A3-4C7A-A8B0-1AC1D8D4C37B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rpi-multimedia-controller/Player/ViewController/RMCPlayerViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-didReceiveStatus:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C28960FC-0F4D-4F6E-B6C8-AE53460C595B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rpi-multimedia-controller/Player/ViewController/RMCPlayerViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "-didReceiveStatus:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9AEF2BBE-9E19-481C-8818-113752C9EF9E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rpi-multimedia-controller/Player/ViewController/RMCPlayerViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-didReceiveStatus:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2B6FE780-01E8-4C09-B87F-73EDE9E4F6CD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rpi-multimedia-controller/Player/ViewController/RMCPlayerViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "-didReceiveStatus:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "401C0314-F171-4703-8515-83E2F1CD6E13"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rpi-multimedia-controller/Player/ViewController/RMCPlayerViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E408919D-AB57-45DB-A68D-F91A8A348E2B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rpi-multimedia-controller/Player/ViewController/RMCPlayerViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "streamURLString()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A9EF2BF2-1B4B-4357-B485-E105F9396376"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rpi-multimedia-controller/Player/ViewController/RMCPlayerViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-didReceiveStatus:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RMCError : NSObject <NSSecureCoding, RMCBufferProtocol>
 
+@property (        nonatomic, getter=isValid) BOOL valid;
+
 @property (strong, nonatomic) NSString *message;
 
 - (instancetype)initWithMessage:(nullable NSString*)message;

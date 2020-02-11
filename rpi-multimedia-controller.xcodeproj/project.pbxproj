@@ -17,6 +17,7 @@
 		218F882323F2D48A00564329 /* MZKeyboardAutoScrollHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 218F882123F2D48A00564329 /* MZKeyboardAutoScrollHandler.m */; };
 		218F882723F2E4A100564329 /* UIBar+Separator.m in Sources */ = {isa = PBXBuildFile; fileRef = 218F882523F2E4A100564329 /* UIBar+Separator.m */; };
 		218F882A23F2E91700564329 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 218F882923F2E91600564329 /* UIImage+Color.m */; };
+		218F882F23F2EE7600564329 /* RMCPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 218F882E23F2EE7600564329 /* RMCPlayerViewController.m */; };
 		21C3398023F2C37E007DBD35 /* MZProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C3397D23F2C37D007DBD35 /* MZProxy.m */; };
 		21C3398123F2C37E007DBD35 /* MZProxySupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C3397E23F2C37D007DBD35 /* MZProxySupport.m */; };
 		21C3398223F2C37E007DBD35 /* MZProxyItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C3397F23F2C37D007DBD35 /* MZProxyItem.m */; };
@@ -68,6 +69,8 @@
 		218F882623F2E4A100564329 /* UIBar+Separator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBar+Separator.h"; sourceTree = "<group>"; };
 		218F882823F2E91600564329 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		218F882923F2E91600564329 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
+		218F882D23F2EE7600564329 /* RMCPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMCPlayerViewController.h; sourceTree = "<group>"; };
+		218F882E23F2EE7600564329 /* RMCPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMCPlayerViewController.m; sourceTree = "<group>"; };
 		21C3397423F29457007DBD35 /* RMCModelProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMCModelProtocol.h; sourceTree = "<group>"; };
 		21C3397823F2C37D007DBD35 /* MZProxySupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZProxySupport.h; sourceTree = "<group>"; };
 		21C3397923F2C37D007DBD35 /* MZProxyItemProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZProxyItemProtocol.h; sourceTree = "<group>"; };
@@ -200,6 +203,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		218F882B23F2EE0400564329 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				218F882C23F2EE1500564329 /* ViewController */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		218F882C23F2EE1500564329 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				218F882D23F2EE7600564329 /* RMCPlayerViewController.h */,
+				218F882E23F2EE7600564329 /* RMCPlayerViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		21C3397723F2C33F007DBD35 /* MZProxy */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +263,7 @@
 				21FCC5F723F197F400684860 /* Model */,
 				21FCC5E123F181C600684860 /* Welcome */,
 				21FCC60D23F1BDB700684860 /* List */,
+				218F882B23F2EE0400564329 /* Player */,
 				21FCC5B423F17BE300684860 /* AppDelegate.h */,
 				21FCC5B523F17BE300684860 /* AppDelegate.m */,
 				21FCC5C023F17BE700684860 /* Assets.xcassets */,
@@ -489,6 +510,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				218F882F23F2EE7600564329 /* RMCPlayerViewController.m in Sources */,
 				21FCC5DF23F1807700684860 /* mcommon.c in Sources */,
 				21FCC5E023F1807700684860 /* mimage.c in Sources */,
 				218F882323F2D48A00564329 /* MZKeyboardAutoScrollHandler.m in Sources */,
@@ -656,6 +678,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R96VZHJ56V;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "rpi-multimedia-controller/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -675,6 +698,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R96VZHJ56V;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "rpi-multimedia-controller/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (

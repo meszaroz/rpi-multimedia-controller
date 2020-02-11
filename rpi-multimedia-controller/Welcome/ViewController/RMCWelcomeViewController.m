@@ -174,8 +174,7 @@
                 [RMCSupport showWarning:error.localizedDescription inViewController:weakSelf];
             }
             else {
-                RMCCollectionViewController *collectionVC = [RMCCollectionViewController new];
-                [weakSelf.navigationController pushViewController:collectionVC animated:YES];
+                [weakSelf.navigationController pushViewController:[RMCCollectionViewController new] animated:YES];
                 [weakSelf saveConnection];
             }
         }

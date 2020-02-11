@@ -8,10 +8,6 @@
 
 #import "PureLayout.h"
 #import "RMCCollectionViewController.h"
-#import "RMCCommunicationController.h"
-#import "RMCListProxy.h"
-#import "RMCCollection.h"
-#import "RMCSupport.h"
 
 @implementation RMCCollectionViewCell
 
@@ -60,6 +56,11 @@
 
 @end
 
+#import "RMCCommunicationController.h"
+#import "RMCListProxy.h"
+#import "RMCCollection.h"
+#import "RMCSupport.h"
+#import "RMCPlayerViewController.h"
 #import "UIBar+Separator.h"
 #import "UIImage+Color.h"
 
@@ -98,6 +99,11 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerRequestStatusNotification object:self];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [_proxy invalidate];
+    [super viewWillAppear:animated];
+}
+
 - (void)setupUI {
     [self setupMain          ];
     [self setupCollectionView];
@@ -106,7 +112,7 @@
 }
 
 - (void)playingAction:(id)sender {
-    /* ... - push playing VC */
+    [self pushPlayerViewControllerWithStatus:_status];
 }
 
 - (void)disconnectAction:(id)sender {
@@ -114,7 +120,7 @@
 }
 
 - (void)didDisconnect:(NSNotification*)notification {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)dealloc {
@@ -182,8 +188,14 @@
 }
 
 - (void)didReceiveStatus:(RMCStatus*)status {
-    _status = [status isKindOfClass:RMCStatus.class] && status.act && status.act.length > 0 ? status : nil;
+    /* store status */
+    _status = status.isValid ? status : nil;
+    
+    /* update UI */
     _playingButton.enabled = _status != nil;
+    
+    /* reload collection */
+    [_proxy invalidate];
 }
 
 #pragma mark - Collection View Delegate
@@ -201,19 +213,20 @@
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     RMCImage *item = _proxy.filteredModel[indexPath.item];
+    
     RMCCollectionViewCell *obj = (RMCCollectionViewCell*)cell;
     obj.imageView.backgroundColor = item.image ? [UIColor clearColor] : [[UIColor blackColor] colorWithAlphaComponent:0.05];
     obj.imageView.image = item.image;
     obj.titleLabel.text = item.identifier.lastPathComponent;
     
-    BOOL isPlaying = _status && [item.identifier isEqualToString:_status.act];
+    BOOL isPlaying = [self isItemPlaying:item];
     obj.layer.borderWidth = isPlaying ? 2                          : 0;
     obj.layer.borderColor = isPlaying ? [UIColor redColor].CGColor : [UIColor clearColor].CGColor;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    /* ... */
+    [self itemSelected:_proxy.filteredModel[indexPath.item]];
 }
 
 #pragma mark - Flow Layout Delegate
@@ -315,6 +328,56 @@
 - (void)setupProxy {
     _proxy = [[RMCListProxy alloc] initWithModel:self.collection.items
                                          andView:_collectionView];
+}
+
+#pragma mark - Support
+- (BOOL)isItemPlaying:(RMCImage*)item {
+    return _status && item && [item.identifier isEqualToString:_status.act];
+}
+
+- (void)itemSelected:(RMCImage*)item {
+    if (item) {
+        /* jump to playing */
+        if ([self isItemPlaying:item]) {
+            [self playingAction:nil];
+        }
+        /* start new */
+        else {
+            void (^handler)(UIAlertAction *action) = ^(UIAlertAction *action) {
+                [self pushPlayerViewControllerWithStatus:[self sendStatusFromItem:item]];
+            };
+            
+            /* Ask for confirmation */
+            if (_status && _status.act && _status.act.length > 0) {
+                UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Warning" message:@"Other media already playing. Start new one?" preferredStyle:UIAlertControllerStyleAlert];
+                [controller addAction:[UIAlertAction actionWithTitle:@"OK"     style:UIAlertActionStyleDefault     handler:handler]];
+                [controller addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:nil    ]];
+                [self presentViewController:controller animated:YES completion:nil];
+            }
+            /* start playing media */
+            else {
+                handler(nil);
+            }
+        }
+    }
+}
+
+- (RMCStatus*)sendStatusFromItem:(RMCImage*)item {
+    RMCStatus * out = nil;
+    
+    if (item) {
+        out = [[RMCStatus alloc] initWithAct:item.identifier play:YES dura:0 pos:0 vol:0];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerSendStatusNotification object:self userInfo:@{ kUserInfoObjectKey : out }];
+    }
+    
+    return out;
+}
+
+- (void)pushPlayerViewControllerWithStatus:(RMCStatus*)status {
+    UIViewController *vc = [RMCPlayerViewController new];
+    vc.title = status ? status.act.lastPathComponent : nil;
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
