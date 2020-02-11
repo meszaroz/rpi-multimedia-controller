@@ -30,7 +30,7 @@
     dispatch_once(&pred, ^{
         const CGSize cellDefaultSize = CGSizeMake(75.0, 100.0);
         const CGFloat cellDistance = RMCConstants.collectionCellDistance;
-        const CGFloat cellAspect   = 1;
+        const CGFloat cellAspect   = 0.5;
         const CGFloat screenWidth  = [self sizeForOrientation:UIInterfaceOrientationPortrait].width;
         const CGFloat cellWidthWithDistance = cellDefaultSize.width + cellDistance;
         const CGFloat adjustedScreenWidth   = screenWidth - cellDistance;

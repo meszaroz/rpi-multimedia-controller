@@ -78,7 +78,7 @@ NSString * const kUserInfoObjectKey = @"object";
 - (void)handler:(RMCCommunicationHandler*)handler didConnectToHost:(NSString *)host port:(uint16_t)port {
     [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerDidConnectNotification
                                                         object:self
-                                                      userInfo:nil];
+                                                      userInfo:@{ kUserInfoHostKey : host, kUserInfoPortKey : @(port)}];
 }
 
 - (void)handler:(RMCCommunicationHandler*)handler didDisconnectWithError:(nullable NSError *)err {

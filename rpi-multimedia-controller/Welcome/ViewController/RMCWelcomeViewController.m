@@ -113,6 +113,8 @@
     
     [self setupUI];
     [self activateUI];
+    
+    [self loadHostAndPort];
 }
 
 - (void)setupUI {
@@ -165,6 +167,9 @@
             else {
                 RMCCollectionViewController *collectionVC = [RMCCollectionViewController new];
                 [weakSelf.navigationController pushViewController:collectionVC animated:YES];
+                
+                [weakSelf storeHost:notification.userInfo[kUserInfoHostKey]
+                            andPort:notification.userInfo[kUserInfoPortKey]];
             }
         }
     }];
@@ -192,7 +197,7 @@
     _startButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _startButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
     [_startButton addTarget:self action:@selector(connectAction:) forControlEvents:UIControlEventTouchUpInside];
-    [_startButton setTitle:@"CONNECT"                    forState:UIControlStateNormal     ];
+    [_startButton setTitle:@"Connect"                    forState:UIControlStateNormal     ];
     [_startButton setTitleColor:[UIColor whiteColor]     forState:UIControlStateNormal     ];
     [_startButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     _startButton.backgroundColor = [UIColor redColor];
@@ -209,6 +214,33 @@
 }
 
 - (void)setupLogo {
+}
+
+@end
+
+static NSString * const kHostKey  = @"host";
+static NSString * const kPostKey  = @"post";
+
+@implementation RMCWelcomeViewController(Defaults)
+
+- (void)storeHost:(NSString*)host andPort:(NSNumber*)port {
+    if (host && host.length   > 0
+     && port && port.intValue > 0) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:host             forKey:kHostKey];
+        [defaults setObject:port.stringValue forKey:kPostKey];
+    }
+}
+
+- (void)loadHostAndPort {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *tmpHost = [defaults objectForKey:kHostKey];
+    NSString *tmpPort = [defaults objectForKey:kPostKey];
+    
+    if (tmpHost && tmpPort) {
+        _serverSelectorView.hostInput.textField.text = tmpHost;
+        _serverSelectorView.portInput.textField.text = tmpPort;
+    }
 }
 
 @end

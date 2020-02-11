@@ -33,4 +33,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface RMCWelcomeViewController(Defaults)
+
+- (void)storeHost:(NSString*)host andPort:(NSNumber*)port;
+- (void)loadHostAndPort;
+
+@end
+
 NS_ASSUME_NONNULL_END
