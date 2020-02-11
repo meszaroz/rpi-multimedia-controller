@@ -37,7 +37,7 @@
 
 - (void)setupUI {
     _connectionView = [UIView new];
-    _connectionView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.05];
+    _connectionView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.05];
     _connectionView.layer.cornerRadius = 5;
     _connectionView.clipsToBounds = YES;
     

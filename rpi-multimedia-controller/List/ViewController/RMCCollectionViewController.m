@@ -6,28 +6,54 @@
 //  Copyright © 2020. private. All rights reserved.
 //
 
+#import "PureLayout.h"
 #import "RMCCollectionViewController.h"
 #import "RMCCommunicationController.h"
 #import "RMCCollection.h"
 #import "RMCSupport.h"
 
 @implementation RMCCollectionViewCell
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    
+    if (self) {
+        _titleLabel = [UILabel new];
+        _titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+        _titleLabel.textColor = [UIColor darkGrayColor];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.numberOfLines = 0;
+        [self.contentView addSubview:_titleLabel];
+        [_titleLabel autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 5, 0, 5) excludingEdge:ALEdgeTop];
+        [_titleLabel autoSetDimension:ALDimensionHeight toSize:30];
+        
+        _imageView = [UIImageView new];
+        _imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self.contentView addSubview:_imageView];
+        [_imageView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(5, 5, 0, 5) excludingEdge:ALEdgeBottom];
+        [_imageView autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:_titleLabel];
+        
+        _imageView.clipsToBounds = YES;
+        _imageView.layer.cornerRadius = 10;
+        self      .layer.cornerRadius = 10;
+    }
+    
+    return self;
+}
+
 @end
 
 @interface RMCCollectionViewController ()
 @end
 
 @implementation RMCCollectionViewController {
-    UICollectionViewFlowLayout *_layout;
+    RMCStatus       *_status;
     UIBarButtonItem *_playingButton;
     UIBarButtonItem *_disconnectButton;
 }
 
 - (instancetype)init {
-    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    
-    self = [super initWithCollectionViewLayout:layout];
+    self = [super initWithCollectionViewLayout:[UICollectionViewFlowLayout new]];
     
     if (self) {
         _collection = [RMCCollection new];
@@ -48,6 +74,7 @@
 }
 
 - (void)setupCollectionView {
+    self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.delegate   = self;
     self.collectionView.dataSource = self;
     [self.collectionView registerClass:RMCCollectionViewCell.class forCellWithReuseIdentifier:@"Cell"];
@@ -140,7 +167,8 @@
 }
 
 - (void)didReceiveStatus:(RMCStatus*)status {
-    _playingButton.enabled = [status isKindOfClass:RMCStatus.class] && status.act && status.act.length > 0;
+    _status = [status isKindOfClass:RMCStatus.class] && status.act && status.act.length > 0 ? status : nil;
+    _playingButton.enabled = _status != nil;
 }
 
 #pragma mark - Collection View Delegate
@@ -159,8 +187,13 @@
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     RMCImage *item = [_collection.items objectAtIndex:indexPath.item];
     RMCCollectionViewCell *obj = (RMCCollectionViewCell*)cell;
+    obj.imageView.backgroundColor = item.image ? [UIColor clearColor] : [[UIColor blackColor] colorWithAlphaComponent:0.05];
     obj.imageView.image = item.image;
-    obj.title.text      = item.identifier.lastPathComponent;
+    obj.titleLabel.text = item.identifier.lastPathComponent;
+    
+    BOOL isPlaying = _status && [item.identifier isEqualToString:_status.act];
+    obj.layer.borderWidth = isPlaying ? 2                          : 0;
+    obj.layer.borderColor = isPlaying ? [UIColor redColor].CGColor : [UIColor clearColor].CGColor;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -170,22 +203,20 @@
 
 #pragma mark - FlowLayout
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 10;
+    return RMCConstants.collectionCellDistance;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return RMCConstants.collectionCellDistance;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     CGFloat inset = [self collectionView:collectionView layout:collectionViewLayout minimumInteritemSpacingForSectionAtIndex:0];
-    return UIEdgeInsetsMake(0, inset, 0, inset);
+    return UIEdgeInsetsMake(inset, inset, 0, inset);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return [self calculatedCellSize];
-}
-
-#pragma mark - Support
-- (CGSize)calculatedCellSize {
-    CGFloat width = MAX(100, self.view.frame.size.height - 2 * [self collectionView:self.collectionView layout:self.collectionView.collectionViewLayout minimumInteritemSpacingForSectionAtIndex:0]);
-    return CGSizeMake(width, width * 1.5);
+    return RMCConstants.collectionCellSize;
 }
 
 @end

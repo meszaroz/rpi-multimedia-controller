@@ -7,23 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BA5CF136-9AB0-4416-ACEE-655560DD8C19"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
-            timestampString = "603066155.445217"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "-collectionView:willDisplayCell:forItemAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "40CB0C1B-2A72-499D-AC86-6C7C5ACE3511"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -32,8 +15,8 @@
             timestampString = "603066155.445485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "-didReceiveList:"
             landmarkType = "7">
          </BreakpointContent>
@@ -178,7 +161,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "3E9F7415-26FA-4A21-91A5-E2F4E126A18D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rpi-multimedia-controller/Communication/RMCCommunicationController.m"
@@ -194,7 +177,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "0B0BD7B5-FBBF-456D-BE4E-211E91282BD2"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rpi-multimedia-controller/Communication/RMCCommunicationController.m"
@@ -210,7 +193,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "B6D88DE9-E67C-45EC-BCDF-B10E622E2D0B"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rpi-multimedia-controller/Communication/RMCCommunicationController.m"
@@ -226,7 +209,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "156FEED0-3B0A-404D-BC89-DCE8A87E0B6D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rpi-multimedia-controller/Communication/RMCCommunicationController.m"
@@ -242,7 +225,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "14503DAC-8B3C-4BCC-A17C-9C8672465B17"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rpi-multimedia-controller/Communication/RMCCommunicationController.m"
@@ -258,15 +241,47 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "97DF08CC-AA16-47AF-B151-55941A4847DE"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "-collectionView:willDisplayCell:forItemAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DE40BF69-4B85-436F-9392-8704D18DB533"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "-collectionView:layout:insetForSectionAtIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "570D74A9-D3DD-4B59-BCF0-575FC68DF26A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rpi-multimedia-controller/List/ViewController/RMCCollectionViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "-init"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
