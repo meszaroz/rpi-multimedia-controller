@@ -40,8 +40,8 @@ static TSize containerSize(const StatusContainer* const cont) {
 
 static bool writeDataToBuffer(Buffer *buffer, StatusContainer *cont) {
     bool out = buffer && cont && isBufferAtBeginning(buffer);
-    if (out) {
-        out = writeDataString(buffer, cont->act ? cont->act : cont->act) && out;
+    if (out && cont->act) {
+        out = writeDataString(buffer, cont->act) && out;
         out = writeDataWithSize(buffer,(TPointer*)(&cont->play),sizeof(TBool    )) && out;
         out = writeDataWithSize(buffer,(TPointer*)(&cont->dura),sizeof(TDuration)) && out;
         out = writeDataWithSize(buffer,(TPointer*)(&cont->pos ),sizeof(TSeek    )) && out;

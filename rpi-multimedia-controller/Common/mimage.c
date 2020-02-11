@@ -21,7 +21,7 @@ static TSize containerSize(const ImageContainer* const cont) {
 
 static bool writeDataToBuffer(Buffer *buffer, ImageContainer *cont) {
     bool out = buffer && cont && isBufferAtBeginning(buffer);
-    if (out) {
+    if (out && cont->name) {
         out = writeDataString(buffer,cont->name)                                && out;
         out = writeDataWithSize(buffer,(TPointer*)(&cont->width ),sizeof(TDim)) && out;
         out = writeDataWithSize(buffer,(TPointer*)(&cont->height),sizeof(TDim)) && out;

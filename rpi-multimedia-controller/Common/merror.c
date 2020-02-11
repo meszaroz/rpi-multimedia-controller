@@ -31,8 +31,8 @@ static TSize containerSize(const ErrorContainer* const cont) {
 
 static bool writeDataToBuffer(Buffer *buffer, ErrorContainer *cont) {
     bool out = buffer && cont && isBufferAtBeginning(buffer);
-    if (out) {
-        out = writeDataString(buffer, cont->message ? cont->message : cont->message) && out;
+    if (out && cont->message) {
+        out = writeDataString(buffer, cont->message) && out;
     }
     return out;
 }
