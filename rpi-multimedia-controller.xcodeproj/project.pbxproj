@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		2148802923F1EBBF009C45C6 /* RMCCommunicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2148802823F1EBBF009C45C6 /* RMCCommunicationController.m */; };
 		2148802D23F207DD009C45C6 /* RMCSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2148802C23F207DD009C45C6 /* RMCSupport.m */; };
+		218F881023F2CB6A00564329 /* MZFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 218F880E23F2CB6A00564329 /* MZFunctions.m */; };
+		218F881523F2CBB500564329 /* MZMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 218F881223F2CBB500564329 /* MZMutableArray.m */; };
+		218F881923F2D08200564329 /* RMCListProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 218F881823F2D08200564329 /* RMCListProxy.m */; };
+		218F881D23F2D11F00564329 /* MZProxyDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 218F881B23F2D11F00564329 /* MZProxyDefaults.m */; };
+		218F882223F2D48A00564329 /* MZTextInputHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 218F881F23F2D48A00564329 /* MZTextInputHandler.m */; };
+		218F882323F2D48A00564329 /* MZKeyboardAutoScrollHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 218F882123F2D48A00564329 /* MZKeyboardAutoScrollHandler.m */; };
+		218F882723F2E4A100564329 /* UIBar+Separator.m in Sources */ = {isa = PBXBuildFile; fileRef = 218F882523F2E4A100564329 /* UIBar+Separator.m */; };
+		218F882A23F2E91700564329 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 218F882923F2E91600564329 /* UIImage+Color.m */; };
 		21C3398023F2C37E007DBD35 /* MZProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C3397D23F2C37D007DBD35 /* MZProxy.m */; };
 		21C3398123F2C37E007DBD35 /* MZProxySupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C3397E23F2C37D007DBD35 /* MZProxySupport.m */; };
 		21C3398223F2C37E007DBD35 /* MZProxyItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C3397F23F2C37D007DBD35 /* MZProxyItem.m */; };
@@ -42,6 +50,24 @@
 		2148802823F1EBBF009C45C6 /* RMCCommunicationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMCCommunicationController.m; sourceTree = "<group>"; };
 		2148802B23F207DD009C45C6 /* RMCSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMCSupport.h; sourceTree = "<group>"; };
 		2148802C23F207DD009C45C6 /* RMCSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMCSupport.m; sourceTree = "<group>"; };
+		218F880D23F2CB6A00564329 /* MZCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCommon.h; sourceTree = "<group>"; };
+		218F880E23F2CB6A00564329 /* MZFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFunctions.m; sourceTree = "<group>"; };
+		218F880F23F2CB6A00564329 /* MZFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFunctions.h; sourceTree = "<group>"; };
+		218F881223F2CBB500564329 /* MZMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZMutableArray.m; sourceTree = "<group>"; };
+		218F881323F2CBB500564329 /* MZMutableArray_p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZMutableArray_p.h; sourceTree = "<group>"; };
+		218F881423F2CBB500564329 /* MZMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZMutableArray.h; sourceTree = "<group>"; };
+		218F881723F2D08200564329 /* RMCListProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMCListProxy.h; sourceTree = "<group>"; };
+		218F881823F2D08200564329 /* RMCListProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMCListProxy.m; sourceTree = "<group>"; };
+		218F881B23F2D11F00564329 /* MZProxyDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZProxyDefaults.m; sourceTree = "<group>"; };
+		218F881C23F2D11F00564329 /* MZProxyDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZProxyDefaults.h; sourceTree = "<group>"; };
+		218F881E23F2D48A00564329 /* MZTextInputHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTextInputHandler.h; sourceTree = "<group>"; };
+		218F881F23F2D48A00564329 /* MZTextInputHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTextInputHandler.m; sourceTree = "<group>"; };
+		218F882023F2D48A00564329 /* MZKeyboardAutoScrollHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZKeyboardAutoScrollHandler.h; sourceTree = "<group>"; };
+		218F882123F2D48A00564329 /* MZKeyboardAutoScrollHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZKeyboardAutoScrollHandler.m; sourceTree = "<group>"; };
+		218F882523F2E4A100564329 /* UIBar+Separator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBar+Separator.m"; sourceTree = "<group>"; };
+		218F882623F2E4A100564329 /* UIBar+Separator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBar+Separator.h"; sourceTree = "<group>"; };
+		218F882823F2E91600564329 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
+		218F882923F2E91600564329 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 		21C3397423F29457007DBD35 /* RMCModelProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMCModelProtocol.h; sourceTree = "<group>"; };
 		21C3397823F2C37D007DBD35 /* MZProxySupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZProxySupport.h; sourceTree = "<group>"; };
 		21C3397923F2C37D007DBD35 /* MZProxyItemProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZProxyItemProtocol.h; sourceTree = "<group>"; };
@@ -119,6 +145,59 @@
 				2148802C23F207DD009C45C6 /* RMCSupport.m */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		218F880C23F2CB5900564329 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				218F880D23F2CB6A00564329 /* MZCommon.h */,
+				218F880F23F2CB6A00564329 /* MZFunctions.h */,
+				218F880E23F2CB6A00564329 /* MZFunctions.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		218F881123F2CB9700564329 /* MZMutableArray */ = {
+			isa = PBXGroup;
+			children = (
+				218F881323F2CBB500564329 /* MZMutableArray_p.h */,
+				218F881423F2CBB500564329 /* MZMutableArray.h */,
+				218F881223F2CBB500564329 /* MZMutableArray.m */,
+			);
+			path = MZMutableArray;
+			sourceTree = "<group>";
+		};
+		218F881623F2D05600564329 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				218F881723F2D08200564329 /* RMCListProxy.h */,
+				218F881823F2D08200564329 /* RMCListProxy.m */,
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
+		218F881A23F2D11000564329 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				218F882023F2D48A00564329 /* MZKeyboardAutoScrollHandler.h */,
+				218F882123F2D48A00564329 /* MZKeyboardAutoScrollHandler.m */,
+				218F881E23F2D48A00564329 /* MZTextInputHandler.h */,
+				218F881F23F2D48A00564329 /* MZTextInputHandler.m */,
+				218F881C23F2D11F00564329 /* MZProxyDefaults.h */,
+				218F881B23F2D11F00564329 /* MZProxyDefaults.m */,
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
+		218F882423F2E47300564329 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				218F882623F2E4A100564329 /* UIBar+Separator.h */,
+				218F882523F2E4A100564329 /* UIBar+Separator.m */,
+				218F882823F2E91600564329 /* UIImage+Color.h */,
+				218F882923F2E91600564329 /* UIImage+Color.m */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		21C3397723F2C33F007DBD35 /* MZProxy */ = {
@@ -215,6 +294,9 @@
 		21FCC5E923F1832E00684860 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				218F882423F2E47300564329 /* Extensions */,
+				218F880C23F2CB5900564329 /* Common */,
+				218F881123F2CB9700564329 /* MZMutableArray */,
 				21C3397723F2C33F007DBD35 /* MZProxy */,
 				21FCC5EA23F1834000684860 /* Support */,
 			);
@@ -224,6 +306,7 @@
 		21FCC5EA23F1834000684860 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				218F881A23F2D11000564329 /* Object */,
 				21FCC5EB23F1836C00684860 /* View */,
 			);
 			path = Support;
@@ -283,6 +366,7 @@
 		21FCC60D23F1BDB700684860 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				218F881623F2D05600564329 /* Object */,
 				21FCC61123F1BECA00684860 /* ViewController */,
 			);
 			path = List;
@@ -407,6 +491,7 @@
 			files = (
 				21FCC5DF23F1807700684860 /* mcommon.c in Sources */,
 				21FCC5E023F1807700684860 /* mimage.c in Sources */,
+				218F882323F2D48A00564329 /* MZKeyboardAutoScrollHandler.m in Sources */,
 				21FCC5DB23F1807700684860 /* mstatus.c in Sources */,
 				21FCC5E423F1820000684860 /* RMCWelcomeViewController.m in Sources */,
 				21FCC5F223F1846700684860 /* MZActivityIndicatorOverlayView.m in Sources */,
@@ -417,19 +502,26 @@
 				21C3398123F2C37E007DBD35 /* MZProxySupport.m in Sources */,
 				21FCC5E823F182A500684860 /* RMCWelcomeInputView.m in Sources */,
 				21FCC60623F19E2800684860 /* RMCError.m in Sources */,
+				218F881023F2CB6A00564329 /* MZFunctions.m in Sources */,
 				21FCC5DD23F1807700684860 /* merror.c in Sources */,
 				21FCC60323F19CF100684860 /* RMCList.m in Sources */,
 				21C3398223F2C37E007DBD35 /* MZProxyItem.m in Sources */,
 				21FCC5B623F17BE300684860 /* AppDelegate.m in Sources */,
 				21FCC5EE23F1838000684860 /* MZTextField.m in Sources */,
+				218F881523F2CBB500564329 /* MZMutableArray.m in Sources */,
 				21FCC5F623F193A000684860 /* RMCCommunication.m in Sources */,
 				21FCC61023F1BEC300684860 /* RMCCollectionViewController.m in Sources */,
+				218F881923F2D08200564329 /* RMCListProxy.m in Sources */,
 				21FCC60023F19A5800684860 /* RMCImage.m in Sources */,
 				21C3398023F2C37E007DBD35 /* MZProxy.m in Sources */,
 				21FCC5FA23F1981000684860 /* RMCStatus.m in Sources */,
 				21FCC5DC23F1807700684860 /* mbuffer.c in Sources */,
+				218F882723F2E4A100564329 /* UIBar+Separator.m in Sources */,
 				21FCC60C23F1B3A400684860 /* RMCCollection.m in Sources */,
+				218F881D23F2D11F00564329 /* MZProxyDefaults.m in Sources */,
+				218F882A23F2E91700564329 /* UIImage+Color.m in Sources */,
 				21FCC5C723F17BE700684860 /* main.m in Sources */,
+				218F882223F2D48A00564329 /* MZTextInputHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

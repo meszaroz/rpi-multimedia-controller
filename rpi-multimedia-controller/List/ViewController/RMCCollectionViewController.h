@@ -19,9 +19,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface RMCCollectionHeaderView : UICollectionReusableView
+
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+
+@end
+
 @class RMCCollection;
 
-@interface RMCCollectionViewController : UICollectionViewController
+@interface RMCCollectionViewController : UIViewController
 
 @property (strong, nonatomic, readonly) RMCCollection *collection;
 

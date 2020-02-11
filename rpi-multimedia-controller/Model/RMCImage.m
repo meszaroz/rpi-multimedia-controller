@@ -142,7 +142,8 @@ static NSString * const kImageKey      = @"image";
                             provider,NULL,NO,renderingIntent);
         
         if (imageRef) {
-            out = [UIImage imageWithCGImage:imageRef];
+            /* Make a deep copy of the image */
+            out = [UIImage imageWithData:UIImagePNGRepresentation([UIImage imageWithCGImage:imageRef])];
             CGImageRelease(imageRef);
         }
     }

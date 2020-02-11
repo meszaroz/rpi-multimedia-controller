@@ -9,8 +9,10 @@
 #import "PureLayout.h"
 #import "RMCWelcomeViewController.h"
 #import "RMCWelcomeInputView.h"
+#import "MZTextInputHandler.h"
 
 @implementation RMCWelcomeServerSelectorView {
+    MZTextInputHandler *_textInputHandler;
     UIView  *_connectionView;
     UILabel *_connectionTitleLabel;
 }
@@ -74,6 +76,13 @@
     [_portInput autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:20];
     [_portInput autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_hostInput withOffset:10];
     [_portInput autoSetDimension:ALDimensionHeight toSize:30];
+    
+    _textInputHandler = [MZTextInputHandler new];
+    _textInputHandler.shouldInputsBecomeFirstRespondersAutomatically = YES;
+    
+    [_textInputHandler registerInput:_hostInput.textField];
+    [_textInputHandler registerInput:_portInput.textField];
+
 }
 
 @end
@@ -189,16 +198,16 @@
 
 #pragma mark - local initialization
 - (void)setupMain {
+    self.navigationController.navigationBar.translucent = NO;
 }
 
 - (void)setupButton {
     _startButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _startButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
     [_startButton addTarget:self action:@selector(connectAction:) forControlEvents:UIControlEventTouchUpInside];
-    [_startButton setTitle:@"Connect"                    forState:UIControlStateNormal     ];
+    [_startButton setTitle:@"CONNECT"                    forState:UIControlStateNormal     ];
     [_startButton setTitleColor:[UIColor whiteColor]     forState:UIControlStateNormal     ];
     [_startButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    _startButton.backgroundColor = [UIColor redColor];
     _startButton.layer.cornerRadius = 5;
     _startButton.clipsToBounds = YES;
 }

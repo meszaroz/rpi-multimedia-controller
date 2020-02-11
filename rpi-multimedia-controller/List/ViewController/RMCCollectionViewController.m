@@ -9,6 +9,7 @@
 #import "PureLayout.h"
 #import "RMCCollectionViewController.h"
 #import "RMCCommunicationController.h"
+#import "RMCListProxy.h"
 #import "RMCCollection.h"
 #import "RMCSupport.h"
 
@@ -43,21 +44,44 @@
 
 @end
 
-@interface RMCCollectionViewController ()
+@implementation RMCCollectionHeaderView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    
+    if (self) {
+        _searchBar = [UISearchBar new];
+        [self addSubview:_searchBar];
+        [_searchBar autoPinEdgesToSuperviewEdges];
+    }
+    
+    return self;
+}
+
+@end
+
+#import "UIBar+Separator.h"
+#import "UIImage+Color.h"
+
+@interface RMCCollectionViewController () <UISearchBarDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 @end
 
 @implementation RMCCollectionViewController {
+    RMCListProxy    *_proxy;
     RMCStatus       *_status;
-    UIBarButtonItem *_playingButton;
-    UIBarButtonItem *_disconnectButton;
+    
+    UISearchBar      *_searchBar;
+    UICollectionView *_collectionView;
+    
+    UIBarButtonItem  *_playingButton;
+    UIBarButtonItem  *_disconnectButton;
 }
 
 - (instancetype)init {
-    self = [super initWithCollectionViewLayout:[UICollectionViewFlowLayout new]];
+    self = [super init];
     
     if (self) {
         _collection = [RMCCollection new];
-        [self setupCollectionView  ];
         [self registerNotifications];
     }
     
@@ -67,27 +91,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupBarButtons];
+    [self setupUI   ];
+    [self setupProxy];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerRequestListNotification   object:self];
     [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerRequestStatusNotification object:self];
 }
 
-- (void)setupCollectionView {
-    self.collectionView.backgroundColor = [UIColor whiteColor];
-    self.collectionView.delegate   = self;
-    self.collectionView.dataSource = self;
-    [self.collectionView registerClass:RMCCollectionViewCell.class forCellWithReuseIdentifier:@"Cell"];
-}
-
-- (void)setupBarButtons {
-    _playingButton    = [[UIBarButtonItem alloc] initWithTitle:@"Playing"    style:UIBarButtonItemStylePlain target:self action:@selector(playingAction:   )];
-    _disconnectButton = [[UIBarButtonItem alloc] initWithTitle:@"Disconnect" style:UIBarButtonItemStylePlain target:self action:@selector(disconnectAction:)];
-
-    self.navigationItem.rightBarButtonItem = _playingButton;
-    self.navigationItem.leftBarButtonItem  = _disconnectButton;
-    
-    _playingButton.enabled = NO;
+- (void)setupUI {
+    [self setupMain          ];
+    [self setupCollectionView];
+    [self setupSearchBar     ];
+    [self setupBarButtons    ];
 }
 
 - (void)playingAction:(id)sender {
@@ -145,7 +160,7 @@
         [_collection setItemsMerged:[RMCCollection itemsFromList:list.list]];
         
         /* reload collection */
-        [self.collectionView reloadData];
+        _proxy.model = _collection.items;
         
         /* request missing images */
         for (RMCImage *item in _collection.items) {
@@ -162,7 +177,7 @@
         [_collection updateItem:image];
         
         /* reload collection */
-        [self.collectionView reloadData];
+        [_proxy invalidate];
     }
 }
 
@@ -177,7 +192,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _collection.items.count;
+    return _proxy.filteredModel.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -185,7 +200,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    RMCImage *item = [_collection.items objectAtIndex:indexPath.item];
+    RMCImage *item = _proxy.filteredModel[indexPath.item];
     RMCCollectionViewCell *obj = (RMCCollectionViewCell*)cell;
     obj.imageView.backgroundColor = item.image ? [UIColor clearColor] : [[UIColor blackColor] colorWithAlphaComponent:0.05];
     obj.imageView.image = item.image;
@@ -201,7 +216,7 @@
     /* ... */
 }
 
-#pragma mark - FlowLayout
+#pragma mark - Flow Layout Delegate
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return RMCConstants.collectionCellDistance;
 }
@@ -217,6 +232,89 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return RMCConstants.collectionCellSize;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    return CGSizeMake(collectionView.frame.size.width, 50.f);
+}
+
+#pragma mark - Search Bar Delegate
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    return YES;
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:YES animated:YES];
+}
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
+    return YES;
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if ([_proxy respondsToSelector:@selector(setFilter:)]) {
+        [_proxy performSelector:@selector(setFilter:) withObject:searchText];
+    }
+}
+
+- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    return YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+    [searchBar setShowsCancelButton:NO animated:YES];
+}
+
+#pragma mark - local initialization
+- (void)setupMain {
+    self.navigationController.navigationBar.separatorView.hidden = YES;
+    self.navigationController.navigationBar.translucent = NO;
+}
+
+- (void)setupCollectionView {
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[UICollectionViewFlowLayout new]];
+    _collectionView.backgroundColor = [UIColor whiteColor];
+    _collectionView.delegate   = self;
+    _collectionView.dataSource = self;
+    _collectionView.alwaysBounceVertical = YES;
+    [_collectionView registerClass:RMCCollectionViewCell.class forCellWithReuseIdentifier:@"Cell"];
+    
+    [self.view addSubview:_collectionView];
+    [_collectionView autoPinEdgesToSuperviewEdges];
+}
+
+- (void)setupSearchBar {
+    _searchBar = [UISearchBar new];
+    _searchBar.delegate     = self;
+    _searchBar.placeholder  = @"Filter media";
+    _searchBar.backgroundImage = [UIImage imageFromColor:[UISearchBar appearance].barTintColor];
+    
+    [self.view addSubview:_searchBar];
+    [_searchBar autoPinToTopLayoutGuideOfViewController:self withInset:0];
+    [_searchBar autoPinEdgeToSuperviewEdge:ALEdgeLeading ];
+    [_searchBar autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
+    [_searchBar autoSetDimension:ALDimensionHeight toSize:45];
+    
+    [_searchBar sizeToFit];
+}
+
+- (void)setupBarButtons {
+    _playingButton    = [[UIBarButtonItem alloc] initWithTitle:@"Playing"    style:UIBarButtonItemStylePlain target:self action:@selector(playingAction:   )];
+    _disconnectButton = [[UIBarButtonItem alloc] initWithTitle:@"Disconnect" style:UIBarButtonItemStylePlain target:self action:@selector(disconnectAction:)];
+
+    self.navigationItem.rightBarButtonItem = _playingButton;
+    self.navigationItem.leftBarButtonItem  = _disconnectButton;
+    
+    _playingButton.enabled = NO;
+}
+
+- (void)setupProxy {
+    _proxy = [[RMCListProxy alloc] initWithModel:self.collection.items
+                                         andView:_collectionView];
 }
 
 @end

@@ -20,6 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self setupCommunication];
     [self setupWindow       ];
+    [self setupAppearance   ];
     return YES;
 }
 
@@ -37,6 +38,14 @@
     [self.window makeKeyAndVisible];
 }
 
+- (void)setupAppearance {
+    [UINavigationBar appearance].titleTextAttributes = @{ NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:20.0f] };
+    [UINavigationBar appearance].tintColor       = [UIColor whiteColor];
+    [UINavigationBar appearance].barTintColor    = [UIColor systemOrangeColor];
+    [UIButton        appearance].backgroundColor = [UIColor systemOrangeColor];
+    [UISearchBar     appearance].barTintColor    = [UIColor systemOrangeColor];
+    [UISearchBar     appearance].tintColor       = [UIColor whiteColor];
+}
 
 #pragma mark - UISceneSession lifecycle
 

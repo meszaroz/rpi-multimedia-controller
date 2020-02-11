@@ -9,6 +9,9 @@
 #import "PureLayout.h"
 #import "RMCWelcomeInputView.h"
 
+@interface RMCWelcomeInputView ()
+@end
+
 @implementation RMCWelcomeInputView {
     UIView *_separator;
 }
