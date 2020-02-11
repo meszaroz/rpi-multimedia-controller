@@ -49,8 +49,8 @@
             timestampString = "603066155.4457051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "-setupSelector"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,6 +282,22 @@
             startingLineNumber = "56"
             endingLineNumber = "56"
             landmarkName = "-init"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9769BC1F-F581-411D-802C-41D3B6436055"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rpi-multimedia-controller/Welcome/ViewController/RMCWelcomeViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "-didConnect:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2148802923F1EBBF009C45C6 /* RMCCommunicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2148802823F1EBBF009C45C6 /* RMCCommunicationController.m */; };
 		2148802D23F207DD009C45C6 /* RMCSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2148802C23F207DD009C45C6 /* RMCSupport.m */; };
+		21C3398023F2C37E007DBD35 /* MZProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C3397D23F2C37D007DBD35 /* MZProxy.m */; };
+		21C3398123F2C37E007DBD35 /* MZProxySupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C3397E23F2C37D007DBD35 /* MZProxySupport.m */; };
+		21C3398223F2C37E007DBD35 /* MZProxyItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C3397F23F2C37D007DBD35 /* MZProxyItem.m */; };
 		21FCC5B623F17BE300684860 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FCC5B523F17BE300684860 /* AppDelegate.m */; };
 		21FCC5C123F17BE700684860 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21FCC5C023F17BE700684860 /* Assets.xcassets */; };
 		21FCC5C423F17BE700684860 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21FCC5C223F17BE700684860 /* LaunchScreen.storyboard */; };
@@ -40,6 +43,14 @@
 		2148802B23F207DD009C45C6 /* RMCSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMCSupport.h; sourceTree = "<group>"; };
 		2148802C23F207DD009C45C6 /* RMCSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMCSupport.m; sourceTree = "<group>"; };
 		21C3397423F29457007DBD35 /* RMCModelProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMCModelProtocol.h; sourceTree = "<group>"; };
+		21C3397823F2C37D007DBD35 /* MZProxySupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZProxySupport.h; sourceTree = "<group>"; };
+		21C3397923F2C37D007DBD35 /* MZProxyItemProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZProxyItemProtocol.h; sourceTree = "<group>"; };
+		21C3397A23F2C37D007DBD35 /* MZProxyItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZProxyItem.h; sourceTree = "<group>"; };
+		21C3397B23F2C37D007DBD35 /* MZProxyItem_p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZProxyItem_p.h; sourceTree = "<group>"; };
+		21C3397C23F2C37D007DBD35 /* MZProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZProxy.h; sourceTree = "<group>"; };
+		21C3397D23F2C37D007DBD35 /* MZProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZProxy.m; sourceTree = "<group>"; };
+		21C3397E23F2C37D007DBD35 /* MZProxySupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZProxySupport.m; sourceTree = "<group>"; };
+		21C3397F23F2C37D007DBD35 /* MZProxyItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZProxyItem.m; sourceTree = "<group>"; };
 		21FCC5B123F17BE300684860 /* rpi-multimedia-controller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rpi-multimedia-controller.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21FCC5B423F17BE300684860 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		21FCC5B523F17BE300684860 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -108,6 +119,21 @@
 				2148802C23F207DD009C45C6 /* RMCSupport.m */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		21C3397723F2C33F007DBD35 /* MZProxy */ = {
+			isa = PBXGroup;
+			children = (
+				21C3397C23F2C37D007DBD35 /* MZProxy.h */,
+				21C3397D23F2C37D007DBD35 /* MZProxy.m */,
+				21C3397B23F2C37D007DBD35 /* MZProxyItem_p.h */,
+				21C3397A23F2C37D007DBD35 /* MZProxyItem.h */,
+				21C3397F23F2C37D007DBD35 /* MZProxyItem.m */,
+				21C3397923F2C37D007DBD35 /* MZProxyItemProtocol.h */,
+				21C3397823F2C37D007DBD35 /* MZProxySupport.h */,
+				21C3397E23F2C37D007DBD35 /* MZProxySupport.m */,
+			);
+			path = MZProxy;
 			sourceTree = "<group>";
 		};
 		21FCC5A823F17BE300684860 = {
@@ -189,6 +215,7 @@
 		21FCC5E923F1832E00684860 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				21C3397723F2C33F007DBD35 /* MZProxy */,
 				21FCC5EA23F1834000684860 /* Support */,
 			);
 			path = External;
@@ -387,15 +414,18 @@
 				2148802D23F207DD009C45C6 /* RMCSupport.m in Sources */,
 				2148802923F1EBBF009C45C6 /* RMCCommunicationController.m in Sources */,
 				21FCC60923F1A64900684860 /* RMCCommunicationHandler.m in Sources */,
+				21C3398123F2C37E007DBD35 /* MZProxySupport.m in Sources */,
 				21FCC5E823F182A500684860 /* RMCWelcomeInputView.m in Sources */,
 				21FCC60623F19E2800684860 /* RMCError.m in Sources */,
 				21FCC5DD23F1807700684860 /* merror.c in Sources */,
 				21FCC60323F19CF100684860 /* RMCList.m in Sources */,
+				21C3398223F2C37E007DBD35 /* MZProxyItem.m in Sources */,
 				21FCC5B623F17BE300684860 /* AppDelegate.m in Sources */,
 				21FCC5EE23F1838000684860 /* MZTextField.m in Sources */,
 				21FCC5F623F193A000684860 /* RMCCommunication.m in Sources */,
 				21FCC61023F1BEC300684860 /* RMCCollectionViewController.m in Sources */,
 				21FCC60023F19A5800684860 /* RMCImage.m in Sources */,
+				21C3398023F2C37E007DBD35 /* MZProxy.m in Sources */,
 				21FCC5FA23F1981000684860 /* RMCStatus.m in Sources */,
 				21FCC5DC23F1807700684860 /* mbuffer.c in Sources */,
 				21FCC60C23F1B3A400684860 /* RMCCollection.m in Sources */,

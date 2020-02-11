@@ -114,7 +114,7 @@
     [self setupUI];
     [self activateUI];
     
-    [self loadHostAndPort];
+    [self loadConnection];
 }
 
 - (void)setupUI {
@@ -167,9 +167,7 @@
             else {
                 RMCCollectionViewController *collectionVC = [RMCCollectionViewController new];
                 [weakSelf.navigationController pushViewController:collectionVC animated:YES];
-                
-                [weakSelf storeHost:notification.userInfo[kUserInfoHostKey]
-                            andPort:notification.userInfo[kUserInfoPortKey]];
+                [weakSelf saveConnection];
             }
         }
     }];
@@ -223,16 +221,19 @@ static NSString * const kPostKey  = @"post";
 
 @implementation RMCWelcomeViewController(Defaults)
 
-- (void)storeHost:(NSString*)host andPort:(NSNumber*)port {
-    if (host && host.length   > 0
-     && port && port.intValue > 0) {
+- (void)saveConnection {
+    NSString *tmpHost = _serverSelectorView.hostInput.textField.text;
+    NSString *tmpPort = _serverSelectorView.portInput.textField.text;
+    
+    if (tmpHost && tmpHost.length   > 0
+     && tmpPort && tmpPort.intValue > 0) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:host             forKey:kHostKey];
-        [defaults setObject:port.stringValue forKey:kPostKey];
+        [defaults setObject:tmpHost forKey:kHostKey];
+        [defaults setObject:tmpPort forKey:kPostKey];
     }
 }
 
-- (void)loadHostAndPort {
+- (void)loadConnection {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *tmpHost = [defaults objectForKey:kHostKey];
     NSString *tmpPort = [defaults objectForKey:kPostKey];
