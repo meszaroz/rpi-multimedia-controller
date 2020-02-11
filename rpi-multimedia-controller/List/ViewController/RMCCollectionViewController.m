@@ -124,7 +124,7 @@
 
 #pragma mark - Data
 - (void)didReceiveData:(NSNotification*)notification {
-    id object = notification.userInfo[@"object"];
+    id object = notification.userInfo[kUserInfoObjectKey];
     if (object) {
         /**/ if ([notification.name isEqualToString:kCommunicationControllerDidReceiveListNotification  ]) { [self didReceiveList  :object]; }
         else if ([notification.name isEqualToString:kCommunicationControllerDidReceiveImageNotification ]) { [self didReceiveImage :object]; }
@@ -150,7 +150,7 @@
         /* request missing images */
         for (RMCImage *item in _collection.items) {
             if (!item.image) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerRequestImageNotification object:self userInfo:@{ @"object" : item }];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerRequestImageNotification object:self userInfo:@{ kUserInfoObjectKey : item }];
             }
         }
     }

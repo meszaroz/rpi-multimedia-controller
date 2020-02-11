@@ -146,7 +146,7 @@
     if (host.length > 0 && port.length > 0 && port.intValue > 0) {
         __weak typeof(self) weakSelf = self;
         [_activityView setHidden:NO animated:YES completion:^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerConnectNotification object:weakSelf userInfo:@{ @"host" : host, @"port" : @(port.intValue) }];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerConnectNotification object:weakSelf userInfo:@{ kUserInfoHostKey : host, kUserInfoPortKey : @(port.intValue) }];
         }];
     }
     else {
@@ -158,7 +158,7 @@
     __weak typeof(self) weakSelf = self;
     [_activityView setHidden:YES animated:YES completion:^{
         if (notification.userInfo) {
-            NSError *error = notification.userInfo[@"error"];
+            NSError *error = notification.userInfo[kUserInfoErrorKey];
             if (error) {
                 [RMCSupport showWarning:error.localizedDescription inViewController:weakSelf];
             }
@@ -196,6 +196,8 @@
     [_startButton setTitleColor:[UIColor whiteColor]     forState:UIControlStateNormal     ];
     [_startButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     _startButton.backgroundColor = [UIColor redColor];
+    _startButton.layer.cornerRadius = 5;
+    _startButton.clipsToBounds = YES;
 }
 
 - (void)setupSelector {

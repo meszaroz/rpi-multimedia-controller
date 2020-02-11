@@ -26,6 +26,12 @@ extern NSString * const kCommunicationControllerRequestStatusNotification;
 
 extern NSString * const kCommunicationControllerSendStatusNotification;
 
+// Fields
+extern NSString * const kUserInfoHostKey;
+extern NSString * const kUserInfoPortKey;
+extern NSString * const kUserInfoErrorKey;
+extern NSString * const kUserInfoObjectKey;
+
 // Controller
 @interface RMCCommunicationController : NSObject
 

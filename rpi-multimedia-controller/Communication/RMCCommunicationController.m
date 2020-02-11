@@ -29,6 +29,12 @@ NSString * const kCommunicationControllerRequestStatusNotification    = @"kCommu
 
 NSString * const kCommunicationControllerSendStatusNotification       = @"kCommunicationControllerSendStatusNotification";
 
+// Fields
+NSString * const kUserInfoHostKey   = @"host";
+NSString * const kUserInfoPortKey   = @"port";
+NSString * const kUserInfoErrorKey  = @"error";
+NSString * const kUserInfoObjectKey = @"object";
+
 // Controller
 @interface RMCCommunicationController() <RMCCommunicationHandlerDelegate>
 @end
@@ -72,37 +78,37 @@ NSString * const kCommunicationControllerSendStatusNotification       = @"kCommu
 - (void)handler:(RMCCommunicationHandler*)handler didConnectToHost:(NSString *)host port:(uint16_t)port {
     [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerDidConnectNotification
                                                         object:self
-                                                      userInfo:@{ @"host" : host, @"port" : @(port)}];
+                                                      userInfo:nil];
 }
 
 - (void)handler:(RMCCommunicationHandler*)handler didDisconnectWithError:(nullable NSError *)err {
     [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerDidDisconnectNotification
                                                         object:self
-                                                      userInfo:err ? @{ @"error" : err } : nil];
+                                                      userInfo:err ? @{ kUserInfoErrorKey : err } : nil];
 }
 
 - (void)handler:(RMCCommunicationHandler*)handler didReceiveError:(RMCError*)error {
     [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerDidReceiveErrorNotification
                                                         object:self
-                                                      userInfo:@{ @"object" : error }];
+                                                      userInfo:@{ kUserInfoObjectKey : error }];
 }
 
 - (void)handler:(RMCCommunicationHandler*)handler didReceiveList:(RMCList*)list {
     [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerDidReceiveListNotification
                                                         object:self
-                                                      userInfo:@{ @"object" : list }];
+                                                      userInfo:@{ kUserInfoObjectKey : list }];
 }
 
 - (void)handler:(RMCCommunicationHandler*)handler didReceiveImage:(RMCImage*)image {
     [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerDidReceiveImageNotification
                                                         object:self
-                                                      userInfo:@{ @"object" : image }];
+                                                      userInfo:@{ kUserInfoObjectKey : image }];
 }
 
 - (void)handler:(RMCCommunicationHandler*)handler didReceiveStatus:(RMCStatus*)status {
     [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerDidReceiveStatusNotification
                                                         object:self
-                                                      userInfo:@{ @"object" : status }];
+                                                      userInfo:@{ kUserInfoObjectKey : status }];
 }
 
 #pragma mark - Notification
@@ -129,15 +135,15 @@ NSString * const kCommunicationControllerSendStatusNotification       = @"kCommu
 #pragma mark - Proxy
 - (void)connect:(NSNotification*)notification {
     if (notification.userInfo) {
-        NSString *host = notification.userInfo[@"host"];
-        NSNumber *port = notification.userInfo[@"port"];
+        NSString *host = notification.userInfo[kUserInfoHostKey];
+        NSNumber *port = notification.userInfo[kUserInfoPortKey];
         
         if (host && port) {
             NSError *error;
             if (![_communication connectToHost:host onPort:port.integerValue error:&error]) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:kCommunicationControllerDidDisconnectNotification
                                                                     object:self
-                                                                  userInfo:@{ @"error" : error }];
+                                                                  userInfo:@{ kUserInfoErrorKey : error }];
             }
         }
     }
@@ -158,7 +164,7 @@ NSString * const kCommunicationControllerSendStatusNotification       = @"kCommu
 
 - (void)requestImage:(NSNotification*)notification {
     if (notification.userInfo) {
-        RMCImage *image = notification.userInfo[@"object"];
+        RMCImage *image = notification.userInfo[kUserInfoObjectKey];
         
         if (image) {
             [_handler requestImage:image];
@@ -172,7 +178,7 @@ NSString * const kCommunicationControllerSendStatusNotification       = @"kCommu
 
 - (void)sendStatus:(NSNotification*)notification {
     if (notification.userInfo) {
-        RMCStatus *status = notification.userInfo[@"object"];
+        RMCStatus *status = notification.userInfo[kUserInfoObjectKey];
         
         if (status) {
             [_handler sendStatus:status];
